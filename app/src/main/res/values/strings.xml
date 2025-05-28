@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Easy Prompt</string>
+    <string name="btn_prompt">プロンプトを作る！</string>
+    <string name="btn_preset">プリセットを作る！</string>
+    <string name="sc_prompt">プロンプト</string>
+    <string name="sc_preset">プリセット</string>
+    <string name="sc_home">ほーむ</string>
+</resources>
