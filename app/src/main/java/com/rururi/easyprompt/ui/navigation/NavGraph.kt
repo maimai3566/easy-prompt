@@ -1,6 +1,7 @@
 package com.rururi.easyprompt.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -12,10 +13,15 @@ import com.rururi.easyprompt.ui.screen.prompt.PromptScreen
 import com.rururi.easyprompt.ui.screen.prompt.PromptViewModel
 
 @Composable
-fun NavGraph(navController: NavHostController= rememberNavController()) {
+fun NavGraph(
+    promptViewModel: PromptViewModel,
+    navController: NavHostController,
+    modifier: Modifier = Modifier
+) {
     NavHost(
         navController = navController,
-        startDestination =Screen.Home.route
+        startDestination = Screen.Home.route,
+        modifier = modifier
     ){
         composable(route = Screen.Home.route){
             HomeScreen(
@@ -24,9 +30,8 @@ fun NavGraph(navController: NavHostController= rememberNavController()) {
             )
         }
         composable(route = Screen.Prompt.route) {
-            val viewModel: PromptViewModel = viewModel()
             PromptScreen(
-                viewModel = viewModel
+                viewModel = promptViewModel,
             )
         }
         composable(route = Screen.Preset.route) {

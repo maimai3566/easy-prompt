@@ -14,11 +14,10 @@ fun PromptScreen(
     val uiState: PromptUiState by viewModel.uiState.collectAsState()
     when (uiState.currentStep) {
         PromptStep.Canvas -> Step1(onNext = { viewModel.nextStep() })
-//        PromptStep.Camera -> CameraScreen()
-//        PromptStep.Lighting -> LightingScreen()
-//        PromptStep.Person -> PersonScreen()
-//        PromptStep.Others -> OthersScreen()
+        PromptStep.Camera -> Step2(onNext = { viewModel.nextStep() })
+        PromptStep.Lighting -> Step3(onNext = { viewModel.nextStep() })
+        PromptStep.Person -> Step4(onNext = { viewModel.nextStep() })
+        PromptStep.Others -> Step5(onNext = { viewModel.nextStep() })
+        PromptStep.Review -> Step6(onNext = { viewModel.nextStep() })
     }
-    Text(text = stringResource(R.string.btn_prompt))
-
 }

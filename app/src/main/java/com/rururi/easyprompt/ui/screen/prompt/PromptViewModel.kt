@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+import java.time.temporal.TemporalAdjusters.next
 
 class PromptViewModel:ViewModel() {
     private val _uiState = MutableStateFlow(PromptUiState())
@@ -18,6 +20,9 @@ class PromptViewModel:ViewModel() {
             PromptStep.Others -> PromptStep.Review
             PromptStep.Review -> PromptStep.Review  //ここで終わり
         }
+        _uiState.update {
+            it.copy(currentStep = next)
+        }
     }
     fun prevStep() {
         val prev = when (_uiState.value.currentStep) {
@@ -27,6 +32,9 @@ class PromptViewModel:ViewModel() {
             PromptStep.Lighting -> PromptStep.Camera
             PromptStep.Camera -> PromptStep.Canvas
             PromptStep.Canvas -> PromptStep.Canvas
+        }
+        _uiState.update {
+            it.copy(currentStep = prev)
         }
     }
 }
