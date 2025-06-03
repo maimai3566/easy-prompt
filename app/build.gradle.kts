@@ -40,6 +40,8 @@ android {
 }
 
 dependencies {
+    //カラーピッカー
+    implementation(libs.compose.colorpicker)
     //ナビゲーション
     implementation(libs.androidx.navigation.compose)            //navigation
     androidTestImplementation(libs.androidx.navigation.testing)   //navigationTest

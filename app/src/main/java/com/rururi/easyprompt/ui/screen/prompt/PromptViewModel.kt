@@ -1,6 +1,7 @@
 package com.rururi.easyprompt.ui.screen.prompt
 
 import androidx.lifecycle.ViewModel
+import com.rururi.easyprompt.utils.log
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -10,6 +11,11 @@ import java.time.temporal.TemporalAdjusters.next
 class PromptViewModel:ViewModel() {
     private val _uiState = MutableStateFlow(PromptUiState())
     val uiState: StateFlow<PromptUiState> = _uiState.asStateFlow()
+
+    //汎用の更新関数
+    fun updateUiState(update: PromptUiState.() -> PromptUiState) {
+        _uiState.update { it.update() }
+    }
 
     fun nextStep() {
         val next = when (_uiState.value.currentStep) {

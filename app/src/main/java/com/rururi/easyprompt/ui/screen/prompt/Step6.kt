@@ -5,7 +5,6 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun Step6(
-    onNext: () -> Unit,
     modifier: Modifier = Modifier
 ) {
 

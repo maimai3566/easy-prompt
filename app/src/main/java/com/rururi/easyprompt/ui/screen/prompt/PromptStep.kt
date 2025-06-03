@@ -1,17 +1,13 @@
 package com.rururi.easyprompt.ui.screen.prompt
 
-sealed class PromptStep(
+enum class PromptStep(
     val number:Int,
     val displayName:String
 ) {
-    object Canvas : PromptStep(1, "Canvas")
-    object Camera : PromptStep(2, "Camera")
-    object Lighting : PromptStep(3, "Lighting")
-    object Person : PromptStep(4, "Person")
-    object Others : PromptStep(5, "Others")
-    object Review : PromptStep(6, "Review")
-
-    companion object {
-        val all = listOf(Canvas, Camera, Lighting, Person, Others, Review)
-    }
+    Canvas(1, "Canvas"),
+    Camera(2, "Camera"),
+    Lighting(3, "Lighting"),
+    Person(4, "Person"),
+    Others(5, "Others"),
+    Review(6, "Review")
 }

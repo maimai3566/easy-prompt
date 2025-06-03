@@ -27,16 +27,14 @@ fun PromptTopBar(
                 style = MaterialTheme.typography.displaySmall
             )
         },
-        navigationIcon = {
-            if (currentStep != PromptStep.Canvas) {
-                IconButton(onClick = onBack) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = stringResource(R.string.icon_back)
-                    )
-                }
-            }
-        },
+//        navigationIcon = {
+//            IconButton(onClick = onBack) {
+//                Icon(
+//                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+//                    contentDescription = stringResource(R.string.icon_back)
+//                )
+//            }
+//        },
         modifier = modifier
     )
 }

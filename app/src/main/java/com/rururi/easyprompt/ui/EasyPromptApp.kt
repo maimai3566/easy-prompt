@@ -45,7 +45,7 @@ fun EasyPromptApp(promptViewModel: PromptViewModel = viewModel()) {
             when (currentScreen) {
                 Screen.Prompt.route -> PromptBottomBar(    //プロンプト設定画面
                     currentStep = uiState.currentStep,
-                    onSkip = { promptViewModel.nextStep() },
+                    onBack = { promptViewModel.prevStep() },
                     onNext = { promptViewModel.nextStep() },
                     modifier = Modifier.navigationBarsPadding()
                 )

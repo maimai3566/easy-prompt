@@ -7,5 +7,5 @@ import com.rururi.easyprompt.R
 
 @Composable
 fun PresetScreen() {
-    Text(text = stringResource(R.string.btn_preset))
+    Text(text = stringResource(R.string.btn_text))
 }
