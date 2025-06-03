@@ -17,7 +17,7 @@
     <string name="canvas_size">キャンバスの大きさを比率で指定</string>
     <string name="canvas_size_1">1:1</string>
     <string name="canvas_size_2">9:16</string>
-    <string name="canvas_size_3">16:9</string>"
+    <string name="canvas_size_3">16:9</string>
     <string name="canvas_type_1">透明</string>
     <string name="canvas_type_2">単色</string>
     <string name="canvas_type_3">グラデーション</string>
@@ -83,5 +83,5 @@
     <string name="person_resolution">高精細/イラスト風/フラット/アニメ風/ぼかし</string>
     <string name="other_theme_1">トーン</string>
     <string name="other_theme_2">ムード</string>
-    <string name="other_theme_3">キーワード</string>"
+    <string name="other_theme_3">キーワード</string>
 </resources>
