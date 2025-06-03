@@ -137,7 +137,7 @@ fun SetColor(
 
     if (showColorDialog) {
         ColorSelectDialog(
-            initialColor = Color.White,
+            initialColor = selectedColor,
             onColorSelected = {
                 onColorSelected(it)
                 showColorDialog = false
