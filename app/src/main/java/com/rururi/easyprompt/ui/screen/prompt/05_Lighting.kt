@@ -17,7 +17,7 @@ import com.rururi.easyprompt.ui.screen.RadioSelector
 import com.rururi.easyprompt.ui.screen.SetColor
 import com.rururi.easyprompt.ui.screen.SetRadio
 import com.rururi.easyprompt.ui.theme.EasyPromptTheme
-import androidx.core.graphics.toColorInt
+import com.rururi.easyprompt.ext.toColorOrDefault
 import com.rururi.easyprompt.ext.toRgbaString
 
 @Composable
@@ -60,7 +60,7 @@ fun LightingSec(
         SetColor(
             title = "光の色",
             onColorSelected = { viewModel.updateUiState({ copy(lightState = lightState.copy(color = it.toRgbaString())) }) },
-            selectedColor = Color(uiState.lightState.color.toColorInt()),
+            selectedColor = uiState.lightState.color.toColorOrDefault(),
         )
 
         Text(text = "■光の強度",style = MaterialTheme.typography.titleLarge)
