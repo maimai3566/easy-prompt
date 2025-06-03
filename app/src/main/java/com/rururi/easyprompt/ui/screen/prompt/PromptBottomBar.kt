@@ -39,7 +39,7 @@ fun PromptBottomBar(
     onNext: () -> Unit,
 ) {
     Column(modifier=modifier) {
-        //スキップ、次へボタン
+        //戻る、次へボタン
         Row(
             modifier = Modifier
                 .fillMaxWidth()
