@@ -117,10 +117,15 @@ fun SetColor(
     title:String,
     onColorSelected: (Color) -> Unit,
     selectedColor: Color = Color.White,
+    showTitle:Boolean = true,
 ){
     var showColorDialog by remember { mutableStateOf(false) }
     Column(modifier = modifier) {
-        Text(text = "■$title", style = MaterialTheme.typography.titleLarge)
+        Text(
+            text = "■$title",
+            style = MaterialTheme.typography.titleLarge,
+            color = if (showTitle) Color.Black else Color.Transparent
+        )
         Button(
             onClick = { showColorDialog = true },
             colors = ButtonDefaults.buttonColors(
@@ -148,34 +153,53 @@ fun SetColor(
 }
 
 @Composable
+fun CommonTextField(
+    modifier: Modifier = Modifier,
+    value: String,
+    onValueChange: (String) -> Unit,
+    placeholderId: Int,
+    singleLine: Boolean,
+    maxLines: Int,
+) {
+    val focusManager = LocalFocusManager.current
+    TextField(
+        value = value,
+        onValueChange = onValueChange,
+        placeholder = { Text(text = stringResource(placeholderId)) },
+        singleLine = singleLine,
+        maxLines = maxLines,
+        keyboardOptions = KeyboardOptions(
+            imeAction = ImeAction.Next,         //Enterを押したら次の行へ
+            keyboardType = KeyboardType.Text    //テキスト入力用
+        ),  //次の入力に移動
+        keyboardActions = KeyboardActions(
+            onNext = { focusManager.moveFocus(FocusDirection.Down) },   //Enterを押したら次の行に移動
+            onDone = { focusManager.clearFocus() }  //キーボードを閉じる
+        ),
+        modifier = modifier.fillMaxWidth()
+    )
+}
+@Composable
 fun SetTextField(
     modifier: Modifier = Modifier,
     title:String,
     example:String,
     value: String,
     onValueChange: (String) -> Unit,
-    labelResId:Int,
+    placeholderId:Int,
+    singleLine:Boolean = true,
+    maxLines:Int = 1,
 ){
-    val focusManager = LocalFocusManager.current
-
     Column(modifier=modifier) {
         Text(text = "■$title", style = MaterialTheme.typography.titleLarge)
         Column(modifier = modifier.padding(dimensionResource(R.dimen.p_small))) {
-            Text(text = "例）$example")
-            TextField(
+            if (example.isNotEmpty()) {Text(text = "例）$example")}
+            CommonTextField(
                 value = value,
                 onValueChange = onValueChange,
-                placeholder = { Text(text = stringResource(labelResId)) },
-                singleLine = true,
-                keyboardOptions = KeyboardOptions(
-                    imeAction = ImeAction.Next,         //Enterを押したら次の行へ
-                    keyboardType = KeyboardType.Text    //テキスト入力用
-                ),  //次の入力に移動
-                keyboardActions = KeyboardActions(
-                    onNext = { focusManager.moveFocus(FocusDirection.Down) },   //Enterを押したら次の行に移動
-                    onDone = { focusManager.clearFocus() }  //キーボードを閉じる
-                ),
-                modifier = modifier.fillMaxWidth()
+                placeholderId = placeholderId,
+                singleLine = singleLine,
+                maxLines = maxLines
             )
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.p_medium)))
         }
@@ -189,9 +213,12 @@ fun SetRadioText(
     options: List<RadioOption>,
     selectedOption: String,
     onOptionSelected: (String) -> Unit,
-    customExample:String,
-    customText:String,
-    customOnValueChange: ((String) -> Unit),
+    example:String,
+    value: String,
+    onValueChange: (String) -> Unit,
+    placeholderId:Int,
+    singleLine:Boolean = true,
+    maxLines:Int = 1,
 ){
     Column(modifier = modifier) {
         Text(text = "■$title", style= MaterialTheme.typography.titleLarge)
@@ -203,22 +230,13 @@ fun SetRadioText(
             )
             val labelText = stringResource(R.string.option_custom)
             if (selectedOption == labelText) {      //自分で選択を選んだ時にテキストフィールドを表示
-                val focusManager = LocalFocusManager.current
-
-                Text(text = "例）$customExample")
-                TextField(
-                    value = customText,
-                    onValueChange = customOnValueChange,
-                    singleLine = true,
-                    keyboardOptions = KeyboardOptions(
-                        imeAction = ImeAction.Next,         //Enterを押したら次の行へ
-                        keyboardType = KeyboardType.Text    //テキスト入力用
-                    ),  //次の入力に移動
-                    keyboardActions = KeyboardActions(
-                        onNext = { focusManager.moveFocus(FocusDirection.Down) },   //Enterを押したら次の行に移動
-                        onDone = { focusManager.clearFocus() }  //キーボードを閉じる
-                    ),
-                    modifier = modifier.fillMaxWidth()
+                if (example.isNotEmpty()) {Text(text = "例）$example")}
+                CommonTextField(
+                    value = value,
+                    onValueChange = onValueChange,
+                    placeholderId = placeholderId,
+                    singleLine = singleLine,
+                    maxLines = maxLines,
                 )
             }
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.p_medium)))
@@ -282,45 +300,6 @@ fun RadioSelector(
 }
 
 
-
-@Composable
-fun ColorSelector(
-    modifier: Modifier = Modifier,
-    options: List<RadioOption>,
-    selectedColor: String,
-    onOptionSelected: (String) -> Unit
-){
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(6),   //5列
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.p_small)),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.p_small)),
-        modifier = modifier
-            .padding(dimensionResource(R.dimen.p_small))
-            .fillMaxWidth()
-            .height(200.dp)
-//            .height(IntrinsicSize.Min)
-    ){
-        items(options) { option ->
-            val labelText = stringResource(option.labelResId)
-            val isSelected = labelText == selectedColor
-
-            option.color?.let{ color ->
-                val borderColor = if (color == Color.Black) Color.Red else Color.Black
-                var boxModifier = Modifier
-                    .size(width = 40.dp, height = 28.dp)
-                    .background(color)
-                    .clickable { onOptionSelected(labelText) }
-                if (isSelected) {
-                    boxModifier = boxModifier.then(
-                        Modifier.border(8.dp,borderColor,RoundedCornerShape(4.dp))
-                    )
-                }
-                Box(modifier = boxModifier)
-            }
-        }
-    }
-}
-
 //反対色を取得する拡張関数
 fun Color.invert():Color {
     return Color(
@@ -333,7 +312,6 @@ fun Color.invert():Color {
 
 data class RadioOption(
     val labelResId: Int,          //ラベル多言語対応
-    val color: Color? = null,   //ラジオボタンの色、通常はnull
 )
 
 @Preview(showBackground = true)

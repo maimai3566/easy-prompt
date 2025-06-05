@@ -17,7 +17,7 @@ fun PromptScreen(
         PromptStep.Camera -> CameraSec(viewModel=viewModel, uiState = uiState)
         PromptStep.Lighting -> LightingSec(viewModel = viewModel, uiState = uiState)
         PromptStep.Person -> PersonSec(viewModel=viewModel, uiState = uiState)
-        PromptStep.Others -> TextSec(viewModel=viewModel, uiState = uiState)
+        PromptStep.Others -> TitleSec(viewModel=viewModel, uiState = uiState)
         PromptStep.Review -> Step6()
     }
 }

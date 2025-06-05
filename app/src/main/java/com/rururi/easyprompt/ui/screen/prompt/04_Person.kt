@@ -28,49 +28,49 @@ fun PersonSec(
                 example = "妖精の若い女子、色白、ストレートロングの黒髪に星のティアラ、星のピアス",
                 value = uiState.personState.appearance,
                 onValueChange = { viewModel.updateUiState({ copy(personState = personState.copy(appearance = it)) }) },
-                labelResId = R.string.person_appearance,
+                placeholderId = R.string.person_appearance,
             )
             SetTextField(
                 title = "表情",
                 example = "ぷんぷん怒っている",
                 value = uiState.personState.emotion,
                 onValueChange = { viewModel.updateUiState({ copy(personState = personState.copy(emotion = it)) }) },
-                labelResId = R.string.person_emotion,
+                placeholderId = R.string.person_emotion,
             )
             SetTextField(
                 title = "ポーズ",
                 example = "腕組みをして空中に立って静止",
                 value = uiState.personState.pose,
                 onValueChange = { viewModel.updateUiState({ copy(personState = personState.copy(pose = it)) }) },
-                labelResId = R.string.person_pose,
+                placeholderId = R.string.person_pose,
             )
             SetTextField(
                 title = "目線",
                 example = "目をつむって上を向いている",
                 value = uiState.personState.gaze,
                 onValueChange = { viewModel.updateUiState({ copy(personState = personState.copy(gaze = it)) }) },
-                labelResId = R.string.person_gaze,
+                placeholderId = R.string.person_gaze,
             )
             SetTextField(
                 title = "位置",
                 example = "中央の上",
                 value = uiState.personState.position,
                 onValueChange = { viewModel.updateUiState({ copy(personState = personState.copy(position = it)) }) },
-                labelResId = R.string.person_position,
+                placeholderId = R.string.person_position,
             )
             SetTextField(
                 title = "スタイル",
                 example = "白いTシャツにデニムのショートパンツにスニーカー",
                 value = uiState.personState.style,
                 onValueChange = { viewModel.updateUiState({ copy(personState = personState.copy(style = it)) }) },
-                labelResId = R.string.person_style,
+                placeholderId = R.string.person_style,
             )
             SetTextField(
                 title = "解像度",
                 example = "高画質",
                 value = uiState.personState.resolution,
                 onValueChange = { viewModel.updateUiState({ copy(personState = personState.copy(resolution = it)) }) },
-                labelResId = R.string.person_resolution,
+                placeholderId = R.string.person_resolution,
             )
         }
     }

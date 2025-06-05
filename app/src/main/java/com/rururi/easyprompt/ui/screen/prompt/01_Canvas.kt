@@ -25,7 +25,6 @@ import com.rururi.easyprompt.ui.theme.EasyPromptTheme
 import com.rururi.easyprompt.R
 import com.rururi.easyprompt.ext.toColorOrDefault
 import com.rururi.easyprompt.ext.toRgbaString
-import com.rururi.easyprompt.ui.screen.ColorSelector
 import com.rururi.easyprompt.ui.screen.RadioOption
 import com.rururi.easyprompt.ui.screen.RadioSelector
 import com.rururi.easyprompt.ui.screen.SetColor
@@ -93,9 +92,9 @@ fun CanvasSec(
                         )
                     }
                 },
-                customExample = "新緑の木々が美しい森の中にぽっかり空いた広い空間",
-                customText = uiState.canvasState.type,
-                customOnValueChange = {
+                example = "新緑の木々が美しい森の中にぽっかり空いた広い空間",
+                value = uiState.canvasState.type,
+                onValueChange = {
                     viewModel.updateUiState({
                         copy(
                             canvasState = canvasState.copy(
@@ -104,6 +103,7 @@ fun CanvasSec(
                         )
                     })
                 },
+                placeholderId = R.string.canvas_type_placeholder,
             )
 
             //背景の種類を透明にしたときは、項目が消えるよう条件分岐
@@ -126,7 +126,8 @@ fun CanvasSec(
                     //グラデーションを選択したときだけ、もう1色選択できるようにする
                     if (uiState.canvasState.optType == stringResource(R.string.canvas_type_3)) {
                         SetColor(
-                            title = "2色目",
+                            title = "",
+                            showTitle = false,
                             onColorSelected = {
                                 viewModel.updateUiState {
                                     copy(
@@ -162,9 +163,9 @@ fun CanvasSec(
                             )
                         }
                     },
-                    customExample = "キラキラ輝く",
-                    customText = uiState.canvasState.effect,
-                    customOnValueChange = {
+                    example = "キラキラ輝く",
+                    value = uiState.canvasState.effect,
+                    onValueChange = {
                         viewModel.updateUiState({
                             copy(
                                 canvasState = canvasState.copy(
@@ -173,6 +174,7 @@ fun CanvasSec(
                             )
                         })
                     },
+                    placeholderId = R.string.canvas_effect_placeholder,
                 )
 
                 val paddingOption = listOf(

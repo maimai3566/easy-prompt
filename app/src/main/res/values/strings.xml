@@ -13,7 +13,9 @@
     <string name="sc_home">ほーむ</string>
     <string name="icon_back">もどる</string>
     <string name="icon_next">次へ</string>
+
     <string name="option_custom">自分で設定</string>
+
     <string name="canvas_size">キャンバスの大きさを比率で指定</string>
     <string name="canvas_size_1">1:1</string>
     <string name="canvas_size_2">9:16</string>
@@ -22,16 +24,19 @@
     <string name="canvas_type_2">単色</string>
     <string name="canvas_type_3">グラデーション</string>
     <string name="canvas_type_4">風景</string>
+    <string name="canvas_type_placeholder">黒地に小さいピンクのドットのパターン</string>
     <string name="canvas_effect_1">発光</string>
     <string name="canvas_effect_2">ぼかし</string>
     <string name="canvas_effect_3">ノイズ</string>
     <string name="canvas_effect_4">光の反射</string>
+    <string name="canvas_effect_placeholder">下の方から立ち上がる紫の煙</string>
     <string name="canvas_padding_1">狭い</string>
     <string name="canvas_padding_2">まぁまぁ</string>
     <string name="canvas_padding_3">広い</string>
     <string name="canvas_overlay_1">テクスチャ</string>
     <string name="canvas_overlay_2">パターン</string>
     <string name="canvas_overlay_3">画像</string>
+
     <string name="camera_angle_1">ハイアングル</string>
     <string name="camera_angle_2">アイレベル</string>
     <string name="camera_angle_3">ローアングル</string>
@@ -44,6 +49,7 @@
     <string name="camera_motion_1">パン</string>
     <string name="camera_motion_2">チルト</string>
     <string name="camera_motion_3">ズーム</string>
+
     <string name="theme_tone_1">明るい</string>
     <string name="theme_tone_2">暗い</string>
     <string name="theme_tone_3">鮮やか</string>
@@ -56,6 +62,7 @@
     <string name="theme_tone_10">自然</string>
     <string name="theme_tone_11">サイバーチック</string>
     <string name="theme_keyword">宇宙っぽい/楽しい/ミステリアス/ハイファンタジー/レトロ</string>
+
     <string name="light_style_1">自然光</string>
     <string name="light_style_2">シネマティック</string>
     <string name="light_style_3">ネオン</string>
@@ -74,6 +81,7 @@
     <string name="light_contrast_1">高い</string>
     <string name="light_contrast_2">標準</string>
     <string name="light_contrast_3">低い</string>
+
     <string name="person_appearance">種族/年齢/性別/髪型/肌の色/アクセサリ</string>
     <string name="person_emotion">笑顔/真剣/泣き/怒り/驚き</string>
     <string name="person_pose">立っている/座っている/走っている/寝ている</string>
@@ -81,7 +89,45 @@
     <string name="person_position">真ん中/右側/左側/右上</string>
     <string name="person_style">カジュアル/パンツスーツ/着物/Tシャツ短パン</string>
     <string name="person_resolution">高精細/イラスト風/フラット/アニメ風/ぼかし</string>
+
     <string name="other_theme_1">トーン</string>
     <string name="other_theme_2">ムード</string>
     <string name="other_theme_3">キーワード</string>
+
+    <string name="title_text">キャンペーン開催します！</string>
+    <string name="title_placeholder">しっぽり明朝</string>
+    <string name="title_family_1">MSゴシック</string>
+    <string name="title_family_2">メイリオ</string>
+    <string name="title_family_3">ヒラギノ角ゴシック</string>
+    <string name="title_family_4">游ゴシック</string>
+    <string name="title_family_5">Noto Sans</string>
+    <string name="title_size_1">小さめ</string>
+    <string name="title_size_2">標準</string>
+    <string name="title_size_3">大きめ</string>
+    <string name="title_weight_1">標準</string>
+    <string name="title_weight_2">太い</string>
+    <string name="title_xpos_1">左</string>
+    <string name="title_xpos_2">真ん中</string>
+    <string name="title_xpos_3">右</string>
+    <string name="title_ypos_1">上</string>
+    <string name="title_ypos_2">真ん中</string>
+    <string name="title_ypos_3">下</string>
+    <string name="title_height_1">低い</string>
+    <string name="title_height_2">標準</string>
+    <string name="title_height_3">高い</string>
+    <string name="title_spacing_1">狭い</string>
+    <string name="title_spacing_2">標準</string>
+    <string name="title_spacing_3">広い</string>
+
+    <string name="body_text">詳細は以下チラシをご覧ください。</string>
+
+    <string name="logo_yes">ロゴにする</string>
+    <string name="logo_no">ロゴにしない</string>
+    <string name="logo_xpos_1">左</string>
+    <string name="logo_xpos_2">真ん中</string>
+    <string name="logo_xpos_3">右</string>
+    <string name="logo_ypos_1">上</string>
+    <string name="logo_ypos_2">真ん中</string>
+    <string name="logo_ypos_3">下</string>
+
 </resources>

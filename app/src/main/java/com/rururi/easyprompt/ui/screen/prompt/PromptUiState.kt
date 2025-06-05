@@ -8,6 +8,32 @@ data class PromptUiState(
     val themeSetState: ThemeSetState = ThemeSetState(),
     val lightState: LightingState = LightingState(),
     val personState: PersonState = PersonState(),
+    val titleState: TitleState = TitleState(),
+    val bodyState: BodyState = BodyState(),
+)
+
+data class TitleState(
+    val text: String = "",
+    val family: String = "",
+    val size: String = "",
+    val weight: String = "",
+    val color: String = "",
+    val xPos: String = "",
+    val yPos: String = "",
+    val height: String = "",
+    val spacing: String = "",
+)
+
+data class BodyState(
+    val text: String = "",
+    val family: String = "",
+    val size: String = "",
+    val weight: String = "",
+    val color: String = "",
+    val xPos: String = "",
+    val yPos: String = "",
+    val height: String = "",
+    val spacing: String = "",
 )
 
 data class CanvasState(

@@ -49,7 +49,7 @@ fun ThemeSec(
             example = "梅雨、4コマ漫画、オフィス、コメディ",
             value = uiState.themeSetState.keyword,
             onValueChange = { viewModel.updateUiState({ copy(themeSetState = themeSetState.copy(keyword = it)) }) },
-            labelResId = R.string.theme_keyword,
+            placeholderId = R.string.theme_keyword,
         )
     }
 }
