@@ -40,10 +40,10 @@ import com.rururi.easyprompt.ui.theme.EasyPromptTheme
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    onNavigateToPrompt: () -> Unit = {},
-    onNavigateToPreset: () -> Unit = {}
+    onNavigateToPerson: () -> Unit = {},
+    onNavigateToText: () -> Unit = {},
+    onNavigateToBackground: () -> Unit = {},
 ) {
-//    TestColorPicker()
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -52,21 +52,21 @@ fun HomeScreen(
     ) {
 
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.p_medium)))
-        Button(onClick =onNavigateToPrompt){
+        Button(onClick = onNavigateToPerson){
             Text(
                 text = stringResource(R.string.btn_prompt),
                 style = MaterialTheme.typography.titleLarge
             )
         }
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.p_medium)))
-        Button(onClick = onNavigateToPreset){
+        Button(onClick = onNavigateToText){
             Text(
                 text = stringResource(R.string.btn_text),
                 style = MaterialTheme.typography.titleLarge
             )
         }
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.p_medium)))
-        Button(onClick = onNavigateToPreset) {
+        Button(onClick = onNavigateToBackground) {
             Text(
                 text = stringResource(R.string.btn_object),
                 style = MaterialTheme.typography.titleLarge
@@ -76,43 +76,6 @@ fun HomeScreen(
             text = "すべての設定は「任意」です。\n不要であれば「次へ」ボタンで飛ばしてください。",
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.padding(dimensionResource(R.dimen.p_large))
-        )
-    }
-}
-
-@Composable
-fun TestColorPicker() {
-    var color by remember { mutableStateOf(Color.White) }   //選択している色
-    val controller = rememberColorPickerController()        //色選択コントローラー
-
-    Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.fillMaxWidth()
-            .padding(dimensionResource(R.dimen.p_large))
-    ) {
-        Row {
-            Box(    //選択している色を表示する場所（わかりやすくするため設置）
-                modifier = Modifier
-                    .size(width = 48.dp, height = 32.dp)
-                    .background(color)
-                    .border(1.dp, Color.Black)
-//                    .clickable { color = controller.selectedColor.value }
-            )
-            HsvColorPicker(     //円形のピッカー
-                controller = controller,
-                onColorChanged = { color = it.color },  //選択した色を取得→Boxに渡す
-                modifier = Modifier
-                    .size(height = 250.dp, width = 250.dp)  //ピッカーの大きさ
-            )
-        }
-        Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.p_medium)))
-        BrightnessSlider(       //明暗スライダー
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(32.dp)
-                .padding(horizontal = dimensionResource(R.dimen.p_small)),
-            controller = controller,
         )
     }
 }

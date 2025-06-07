@@ -1,13 +1,51 @@
 package com.rururi.easyprompt.ui.screen.prompt
 
+import java.lang.ProcessBuilder.Redirect.to
+
 enum class PromptStep(
     val number:Int,
     val displayName:String
 ) {
     Canvas(1, "Canvas"),
     Camera(2, "Camera"),
-    Lighting(3, "Lighting"),
+    Theme(3,"Theme"),
     Person(4, "Person"),
-    Others(5, "Others"),
-    Review(6, "Review")
+    Lighting(5, "Lighting"),
+    Title(6, "Title"),
+    Body(7, "Body"),
+    Review(99, "Review")
 }
+
+//選択したプロンプトタイプ
+enum class PromptType{
+    PERSON, //人物中心
+    TEXT,   //文字中心
+    BACKGROUND,  //背景のみ
+}
+
+//選択に応じてルートをマッピング
+val promptStepMap: Map<PromptType, List<PromptStep>> = mapOf(
+    PromptType.PERSON to listOf(
+        PromptStep.Canvas,
+        PromptStep.Camera,
+        PromptStep.Theme,
+        PromptStep.Lighting,
+        PromptStep.Person,
+        PromptStep.Review,
+    ),
+    PromptType.TEXT to listOf(
+        PromptStep.Canvas,
+        PromptStep.Camera,
+        PromptStep.Theme,
+        PromptStep.Title,
+        PromptStep.Body,
+        PromptStep.Review,
+    ),
+    PromptType.BACKGROUND to listOf(
+        PromptStep.Canvas,
+        PromptStep.Camera,
+        PromptStep.Theme,
+        PromptStep.Lighting,
+        PromptStep.Review,
+    )
+)

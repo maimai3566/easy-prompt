@@ -2,6 +2,7 @@ package com.rururi.easyprompt.ui.screen.prompt
 
 
 data class PromptUiState(
+    val promptType: PromptType = PromptType.PERSON,
     val currentStep: PromptStep = PromptStep.Canvas,
     val canvasState: CanvasState = CanvasState(),
     val cameraState: CameraState = CameraState(),
@@ -10,6 +11,8 @@ data class PromptUiState(
     val personState: PersonState = PersonState(),
     val titleState: TitleState = TitleState(),
     val bodyState: BodyState = BodyState(),
+    val result: String = "",
+    val isEdit: Boolean = false,
 )
 
 data class TitleState(

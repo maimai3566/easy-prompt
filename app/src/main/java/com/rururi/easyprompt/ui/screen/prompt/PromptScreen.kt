@@ -6,18 +6,28 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.res.stringResource
 import com.rururi.easyprompt.R
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.navigation.NavController
 
 @Composable
 fun PromptScreen(
-    viewModel: PromptViewModel
+    navController: NavController,
+    promptType: PromptType,
+    viewModel: PromptViewModel,
+    uiState: PromptUiState,
 ) {
-    val uiState: PromptUiState by viewModel.uiState.collectAsState()
-    when (uiState.currentStep) {
+    var currentStep = uiState.currentStep
+
+    when (currentStep) {
         PromptStep.Canvas -> CanvasSec(viewModel=viewModel, uiState = uiState)
         PromptStep.Camera -> CameraSec(viewModel=viewModel, uiState = uiState)
-        PromptStep.Lighting -> LightingSec(viewModel = viewModel, uiState = uiState)
+        PromptStep.Theme -> ThemeSec(viewModel=viewModel, uiState = uiState)
         PromptStep.Person -> PersonSec(viewModel=viewModel, uiState = uiState)
-        PromptStep.Others -> TitleSec(viewModel=viewModel, uiState = uiState)
-        PromptStep.Review -> Step6()
+        PromptStep.Lighting -> LightingSec(viewModel=viewModel, uiState = uiState)
+        PromptStep.Title -> TitleSec(viewModel=viewModel, uiState = uiState)
+        PromptStep.Body -> BodySec(viewModel=viewModel, uiState = uiState)
+        PromptStep.Review -> ReviewSec(viewModel=viewModel, uiState = uiState)
     }
 }

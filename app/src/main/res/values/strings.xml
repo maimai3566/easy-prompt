@@ -8,6 +8,11 @@
     <string name="btn_skip">スキップ</string>
     <string name="btn_ok">いいよ</string>
     <string name="btn_cancel">キャンセル</string>
+    <string name="btn_copy">コピー</string>
+    <string name="btn_copied">コピーした！</string>
+    <string name="btn_edit">編集</string>
+    <string name="btn_edited">編集中！</string>
+    <string name="btn_back">戻る</string>
     <string name="sc_prompt">プロンプト</string>
     <string name="sc_preset">プリセット</string>
     <string name="sc_home">ほーむ</string>
@@ -130,4 +135,7 @@
     <string name="logo_ypos_2">真ん中</string>
     <string name="logo_ypos_3">下</string>
 
+    <string name="preview_title">プロンプト完成～💗</string>
+    <string name="preview_memo_1">*プロンプトは編集ボタンで直接編集できます</string>
+    <string name="preview_memo_2">*コピーボタンでプロンプトをコピーして\n 生成AIのプロンプトに貼り付けてね★</string>
 </resources>

@@ -35,10 +35,18 @@ import kotlinx.coroutines.NonCancellable.isActive
 fun PromptBottomBar(
     modifier: Modifier = Modifier,
     currentStep: PromptStep,
+    promptType: PromptType,
     onBack: () -> Unit,
     onNext: () -> Unit,
+    onCopy: () -> Unit,
+    copied: Boolean
 ) {
-    Column(modifier=modifier) {
+    val stepList = promptStepMap[promptType] ?: emptyList()
+    val currentIndex = stepList.indexOf(currentStep)
+
+    Column(
+        modifier=modifier.background(color = MaterialTheme.colorScheme.surface)
+    ) {
         //戻る、次へボタン
         Row(
             modifier = Modifier
@@ -52,7 +60,7 @@ fun PromptBottomBar(
                     modifier = Modifier.weight(1f)
                 ) {
                     Text(
-                        text = stringResource(R.string.icon_back),
+                        text = stringResource(R.string.btn_back),
                         style = MaterialTheme.typography.titleMedium
                     )
                 }
@@ -60,27 +68,50 @@ fun PromptBottomBar(
                 Spacer(modifier = Modifier.weight(1f))
             }
             Spacer(modifier = Modifier.weight(0.2f))
-            Button(             //次へ
-                onClick = onNext,
-                modifier = Modifier.weight(1f)
-            ){
-                Text(text = stringResource(R.string.btn_next),style = MaterialTheme.typography.titleMedium)
+            if (currentStep != PromptStep.Review) { //Review画面でなければ「次へ」
+                Button(             //次へ
+                    onClick = onNext,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(
+                        text = stringResource(R.string.btn_next),
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                }
+            } else {    //Review画面なら「コピー」
+                Button(
+                    onClick = onCopy,
+                    modifier = Modifier.weight(1f)
+                ){
+                    if (!copied) {
+                        Text(
+                            text = stringResource(R.string.btn_copy),
+                            style = MaterialTheme.typography.titleMedium
+                        )
+                    } else {
+                        Text(
+                            text = stringResource(R.string.btn_copied),
+                            style = MaterialTheme.typography.titleMedium
+                        )
+                    }
+                }
             }
         }
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.p_small)))
+        //進捗ドット表示
         Row(
             modifier=Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            PromptStep.entries.forEach { step ->
-                val isActive = currentStep.displayName == step.displayName
+            stepList.forEachIndexed { index, _ ->
+                val isSelected = index == currentIndex  //進捗ドットのうち、現在選択されているインデックスを取得
                 Box(
                     modifier = Modifier
-                        .size(if(isActive) dimensionResource(R.dimen.dot_large) else dimensionResource(R.dimen.dot_small))
+                        .size(if(isSelected) dimensionResource(R.dimen.dot_large) else dimensionResource(R.dimen.dot_small))
                         .padding(dimensionResource(R.dimen.p_small))
                         .clip(CircleShape)
-                        .background(if(isActive) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline)
+                        .background(if(isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline)
                 )
             }
         }
@@ -91,6 +122,13 @@ fun PromptBottomBar(
 @Composable
 fun PromptBottomBarPreview() {
     EasyPromptTheme {
-        PromptBottomBar(currentStep = PromptStep.Canvas, onBack = {}, onNext = {})
+        PromptBottomBar(
+            currentStep = PromptStep.Canvas,
+            promptType = PromptType.PERSON,
+            onBack = {},
+            onNext = {},
+            onCopy = {},
+            copied = false
+        )
     }
 }
