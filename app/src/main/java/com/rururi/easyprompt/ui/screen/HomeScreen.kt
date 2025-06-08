@@ -1,22 +1,17 @@
 package com.rururi.easyprompt.ui.screen
 
-import android.R.attr.onClick
-import android.R.attr.text
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -25,25 +20,39 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.github.skydoves.colorpicker.compose.BrightnessSlider
-import com.github.skydoves.colorpicker.compose.ColorPickerController
-import com.github.skydoves.colorpicker.compose.HsvColorPicker
-import com.github.skydoves.colorpicker.compose.rememberColorPickerController
 import com.rururi.easyprompt.R
 import com.rururi.easyprompt.ui.theme.EasyPromptTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
     onNavigateToPerson: () -> Unit = {},
     onNavigateToText: () -> Unit = {},
     onNavigateToBackground: () -> Unit = {},
+    onResetAll: () -> Unit = {}
 ) {
+    var showDialog by remember { mutableStateOf(false) }
+
+    //フルリセット時の確認ダイアログ
+    if (showDialog) {
+        BasicAlertDialog(
+            onDismissRequest = { showDialog = false },  //キャンセルボタンや画面外をクリックしたときの処理
+            content = {     //ダイアログに表示させるコンテンツ
+                ResetDialogContent(
+                    onDismiss = { showDialog = false },
+                    onConfirm = {
+                        showDialog = false
+                        onResetAll()
+                    }
+                )
+            }
+        )
+    }
+    //本体
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -68,7 +77,7 @@ fun HomeScreen(
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.p_medium)))
         Button(onClick = onNavigateToBackground) {
             Text(
-                text = stringResource(R.string.btn_object),
+                text = stringResource(R.string.btn_background),
                 style = MaterialTheme.typography.titleLarge
             )
         }
@@ -77,9 +86,64 @@ fun HomeScreen(
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.padding(dimensionResource(R.dimen.p_large))
         )
+        Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.p_medium)))
+        OutlinedButton(onClick = { showDialog = true }) { //リセット用のダイアログを表示
+            Text(
+                text = stringResource(R.string.btn_full_reset),
+                style = MaterialTheme.typography.titleLarge
+            )
+        }
     }
 }
 
+@Composable
+fun ResetDialogContent(
+    modifier: Modifier = Modifier,
+    onDismiss: () -> Unit,
+    onConfirm: () -> Unit
+){
+    Surface(
+        shape = MaterialTheme.shapes.small, //ダイアログの角の形状
+        color = MaterialTheme.colorScheme.surface,  //背景色
+        tonalElevation = dimensionResource(R.dimen.p_small) //影の深さ
+    ) {
+        Column(
+            modifier = modifier.padding(dimensionResource(R.dimen.p_medium))
+        ){
+            Text(
+                text = stringResource(R.string.dialog_title),
+                style = MaterialTheme.typography.titleLarge
+            )
+            Text(
+                text = stringResource(R.string.dialog_message),
+                style = MaterialTheme.typography.bodyLarge
+            )
+            Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.p_medium)))
+            Row {
+                OutlinedButton(onClick = onDismiss) {
+                    Text(
+                        text = stringResource(R.string.btn_cancel),
+                        style = MaterialTheme.typography.titleLarge
+                    )
+                }
+                Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.p_small)))
+                Button(onClick = onConfirm) {
+                    Text(
+                        text = stringResource(R.string.dialog_reset),
+                        style = MaterialTheme.typography.titleLarge
+                    )
+                }
+            }
+        }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun DialogPreview() {
+    EasyPromptTheme {
+        ResetDialogContent(onDismiss = {}, onConfirm = {})
+    }
+}
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {

@@ -2,7 +2,8 @@
     <string name="app_name">Easy Prompt</string>
     <string name="btn_prompt">人物中心のプロンプト</string>
     <string name="btn_text">文字中心のプロンプト</string>
-    <string name="btn_object">背景のみのプロンプト</string>
+    <string name="btn_background">背景のみのプロンプト</string>
+    <string name="btn_full_reset">プロンプトをリセット</string>
     <string name="btn_home">ほーむへ戻る</string>
     <string name="btn_next">次へ</string>
     <string name="btn_skip">スキップ</string>
@@ -18,6 +19,11 @@
     <string name="sc_home">ほーむ</string>
     <string name="icon_back">もどる</string>
     <string name="icon_next">次へ</string>
+
+    <string name="dialog_title">リセットの確認</string>
+    <string name="dialog_message">現在の設定をリセットします。\nよろしいですか？</string>
+    <string name="dialog_cancel">キャンセル</string>
+    <string name="dialog_reset">リセット</string>
 
     <string name="option_custom">自分で設定</string>
 

@@ -20,7 +20,12 @@ class PromptViewModel:ViewModel() {
         return promptStepMap[_uiState.value.promptType] ?: emptyList()
     }
 
-    //現在のプロンプトタイプなどを初期化（リセット）
+    //現在のプロンプトを全部初期化
+    fun resetAll() {
+        _uiState.value = PromptUiState()    //全状態を初期化
+    }
+
+    //現在のプロンプトタイプ、現在のステップなどを初期化（リセット）
     fun reset() {
         val defaultType = PromptType.PERSON
         val firstStep = promptStepMap[defaultType]?.firstOrNull() ?: PromptStep.Canvas

@@ -2,20 +2,17 @@ package com.rururi.easyprompt.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.rururi.easyprompt.ui.screen.HomeScreen
-import com.rururi.easyprompt.ui.screen.PresetScreen
 import com.rururi.easyprompt.ui.screen.prompt.PromptScreen
 import com.rururi.easyprompt.ui.screen.prompt.PromptType
 import com.rururi.easyprompt.ui.screen.prompt.PromptViewModel
-import androidx.compose.runtime.getValue
 
 @Composable
 fun NavGraph(
@@ -42,6 +39,9 @@ fun NavGraph(
                     navController.navigate("prompt/${PromptType.BACKGROUND}")
                     promptViewModel.updateUiState {copy(promptType = PromptType.BACKGROUND)}
                 },
+                onResetAll = { //フルリセット処理
+                    promptViewModel.resetAll()
+                }
             )
         }
         composable( //押したボタンによって動的に画面遷移

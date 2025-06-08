@@ -1,41 +1,29 @@
 package com.rururi.easyprompt.ui
 
-import android.content.ClipData
-import android.util.Log
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.rururi.easyprompt.ui.navigation.NavGraph
-import com.rururi.easyprompt.ui.screen.prompt.PromptStep
-import com.rururi.easyprompt.ui.screen.prompt.PromptTopBar
-import com.rururi.easyprompt.ui.screen.prompt.PromptViewModel
-import com.rururi.easyprompt.ui.theme.EasyPromptTheme
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.platform.ClipEntry
-import androidx.compose.ui.platform.LocalClipboard
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalClipboardManager
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.rururi.easyprompt.R
+import com.rururi.easyprompt.ui.navigation.NavGraph
 import com.rururi.easyprompt.ui.navigation.Screen
 import com.rururi.easyprompt.ui.screen.prompt.PromptBottomBar
-import com.rururi.easyprompt.utils.log
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
+import com.rururi.easyprompt.ui.screen.prompt.PromptTopBar
+import com.rururi.easyprompt.ui.screen.prompt.PromptViewModel
+import com.rururi.easyprompt.ui.theme.EasyPromptTheme
+import kotlinx.coroutines.delay
 
 @Composable
 fun EasyPromptApp(promptViewModel: PromptViewModel = viewModel()) {
@@ -46,6 +34,13 @@ fun EasyPromptApp(promptViewModel: PromptViewModel = viewModel()) {
     val clipboard = LocalClipboardManager.current
     var copied by remember { mutableStateOf(false) }
 
+    //コピーしたら、2秒後に未コピーに戻す
+    LaunchedEffect(copied) {
+        if (copied) {
+            delay(2000L)
+            copied = false
+        }
+    }
     Scaffold(
         //topBar 現在の画面がどこかにより表示を変更
         topBar = {
