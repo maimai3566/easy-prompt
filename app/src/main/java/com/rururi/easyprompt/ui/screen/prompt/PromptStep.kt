@@ -1,7 +1,5 @@
 package com.rururi.easyprompt.ui.screen.prompt
 
-import java.lang.ProcessBuilder.Redirect.to
-
 enum class PromptStep(
     val number:Int,
     val displayName:String
