@@ -49,7 +49,7 @@ class PromptViewModel:ViewModel() {
             }
         }
 
-        // インデックスが次の要素を指せる場合のみ進める
+        // インデックスが次の要素を指せる場合のみ進める(最後のreviewは進めないようにする）
         if (currentIndex != -1 && currentIndex + 1 < steps.size) {
             val next = steps[currentIndex + 1]
             _uiState.update {
@@ -144,7 +144,7 @@ class PromptViewModel:ViewModel() {
             state.lightState.contrast.toYamlLine("contrast"),
         )
         if (lightingLines.isNotEmpty()) {
-            sb.appendLine("  light:")
+            sb.appendLine("  lighting:")
             lightingLines.forEach { sb.appendLine(it) }
         }
 

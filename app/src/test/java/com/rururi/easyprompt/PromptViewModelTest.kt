@@ -1,8 +1,8 @@
 package com.rururi.easyprompt
 
-import com.rururi.easyprompt.ui.screen.prompt.PromptViewModel
 import com.rururi.easyprompt.ui.screen.prompt.PromptStep
 import com.rururi.easyprompt.ui.screen.prompt.PromptType
+import com.rururi.easyprompt.ui.screen.prompt.PromptViewModel
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -134,22 +134,25 @@ class PromptViewModelTest {
         val expected = """
             |prompt:
             |  canvas:
-            |    size: \"1920x1080\"
+            |    size: "1920x1080"
             |    background:
-            |      type: \"solid\"
+            |      type: "solid"
             |  camera:
-            |    angle: \"wide\"
+            |    angle: "wide"
             |  theme:
-            |    tone: \"dark\"
+            |    tone: "dark"
             |  person:
-            |    appearance: \"tall\"
-            |  light:
-            |    style: \"soft\"
+            |    appearance: "tall"
+            |  lighting:
+            |    style: "soft"
             |  title:
-            |    text: \"Hello\"
+            |    text: "Hello"
             |  body:
-            |    text: \"World\"
-            |""".trimMargin() + "\n"
+            |    text: "World"
+            |""".trimMargin()
+
+        println("---Expected---\n$expected")
+        println("---Actual---\n${viewModel.buildYaml()}")
 
         assertEquals(expected, viewModel.buildYaml())
     }
