@@ -49,8 +49,8 @@ class PromptViewModel:ViewModel() {
             }
         }
 
-        //インデックスがリストのサイズより小さい時だけ次に進める
-        if (currentIndex != -1 && currentIndex < steps.size) {
+        // インデックスが次の要素を指せる場合のみ進める
+        if (currentIndex != -1 && currentIndex + 1 < steps.size) {
             val next = steps[currentIndex + 1]
             _uiState.update {
                 it.copy(currentStep = next)
