@@ -4,14 +4,14 @@ import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
 import com.rururi.easyprompt.ui.navigation.NavGraph
 import com.rururi.easyprompt.ui.navigation.Screen
 import com.rururi.easyprompt.ui.screen.prompt.PromptType
 import com.rururi.easyprompt.ui.screen.prompt.PromptViewModel
 import org.junit.Assert.assertEquals
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
 
 class NavGraphTest {
 
@@ -19,14 +19,16 @@ class NavGraphTest {
     val composeTestRule = createAndroidComposeRule<ComponentActivity>()
 
     private lateinit var navController: TestNavHostController
+    private lateinit var viewModel: PromptViewModel
 
     @Before
     fun setupNavGraph() {
         composeTestRule.setContent {
+            viewModel = PromptViewModel()
             navController = TestNavHostController(composeTestRule.activity)
             navController.navigatorProvider.addNavigator(ComposeNavigator())
             NavGraph(
-                promptViewModel = PromptViewModel(),
+                promptViewModel = viewModel,
                 navController = navController
             )
         }
