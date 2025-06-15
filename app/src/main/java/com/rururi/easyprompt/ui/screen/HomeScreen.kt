@@ -1,10 +1,13 @@
 package com.rururi.easyprompt.ui.screen
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
@@ -20,7 +23,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale.Companion.Crop
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.rururi.easyprompt.R
@@ -53,14 +58,33 @@ fun HomeScreen(
         )
     }
     //本体
+    Box(modifier = Modifier.fillMaxSize()){
+        Image(
+            painter = painterResource(R.drawable.home_image),
+            contentDescription = null,
+            contentScale = Crop,
+            alpha = 0.3f,
+            modifier = Modifier.fillMaxSize()
+        )
+    }
+
     Column(
-        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxWidth()
+    ){
+        Text(
+            text = stringResource(R.string.app_name),
+            style = MaterialTheme.typography.displaySmall,
+            color = MaterialTheme.colorScheme.primaryContainer,
+            modifier = Modifier.padding(dimensionResource(R.dimen.p_large))
+        )
+    }
+    Column(
+        verticalArrangement = Arrangement.Bottom,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier=modifier
             .fillMaxSize()
     ) {
-
-        Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.p_medium)))
         Button(onClick = onNavigateToPerson){
             Text(
                 text = stringResource(R.string.btn_prompt),
@@ -93,6 +117,7 @@ fun HomeScreen(
                 style = MaterialTheme.typography.titleLarge
             )
         }
+        Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.p_medium)))
     }
 }
 
@@ -107,6 +132,7 @@ fun ResetDialogContent(
         color = MaterialTheme.colorScheme.surface,  //背景色
         tonalElevation = dimensionResource(R.dimen.p_small) //影の深さ
     ) {
+
         Column(
             modifier = modifier.padding(dimensionResource(R.dimen.p_medium))
         ){

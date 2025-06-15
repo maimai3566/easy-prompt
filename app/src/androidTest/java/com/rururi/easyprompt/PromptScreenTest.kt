@@ -37,7 +37,7 @@ class PromptScreenTest {
 
     @Test
     fun cameraStep_displaysCameraSection() {
-        composeTestRule.onNodeWithText("カメラの角度").assertExists()
+        composeTestRule.onNodeWithText("■カメラの角度").assertExists()
     }
 }
 

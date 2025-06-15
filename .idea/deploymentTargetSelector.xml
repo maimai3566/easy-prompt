@@ -4,16 +4,28 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-05-30T23:01:27.928602Z">
+        <DropdownSelection timestamp="2025-06-14T04:10:40.328994800Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\user\.android\avd\Pixel_5_API_31.avd" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\user\.android\avd\Pixel_9_Pro_XL_API_35.avd" />
             </handle>
           </Target>
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="NavGraphTest">
+      <SelectionState runConfigName="EasyPromptAppTest">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="navigateToPromptScreen_showsBars()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="backgroundSec_buttonClick()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="resetButton_showsConfirmationDialog()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="copyButton_copiesText()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

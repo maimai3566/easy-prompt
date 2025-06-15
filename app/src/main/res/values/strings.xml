@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Easy Prompt</string>
+    <string name="app_name">プロンプト作って？</string>
     <string name="btn_prompt">人物中心のプロンプト</string>
     <string name="btn_text">文字中心のプロンプト</string>
     <string name="btn_background">背景のみのプロンプト</string>
