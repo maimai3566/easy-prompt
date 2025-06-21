@@ -1,36 +1,25 @@
 package com.rururi.easyprompt.ui.screen.prompt
 
-import android.R.attr.type
-import android.R.id.message
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Canvas
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.graphics.toColorInt
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.rururi.easyprompt.ui.theme.EasyPromptTheme
 import com.rururi.easyprompt.R
 import com.rururi.easyprompt.ext.toColorOrDefault
 import com.rururi.easyprompt.ext.toRgbaString
 import com.rururi.easyprompt.ui.screen.RadioOption
-import com.rururi.easyprompt.ui.screen.RadioSelector
 import com.rururi.easyprompt.ui.screen.SetColor
 import com.rururi.easyprompt.ui.screen.SetRadio
 import com.rururi.easyprompt.ui.screen.SetRadioText
-import com.rururi.easyprompt.utils.log
+import com.rururi.easyprompt.ui.theme.EasyPromptTheme
+
 
 @Composable
 fun CanvasSec(
@@ -44,13 +33,14 @@ fun CanvasSec(
     ){
         item {
             val labelText = stringResource(R.string.option_custom)  //自分で設定
+
             val sizeOption = listOf(
-                RadioOption(R.string.canvas_size_1),
-                RadioOption(R.string.canvas_size_2),
-                RadioOption(R.string.canvas_size_3),
+                RadioOption(R.string.canvas_size_1,"canvasSize1"),
+                RadioOption(R.string.canvas_size_2,"canvasSize2"),
+                RadioOption(R.string.canvas_size_3,"canvasSize3"),
             )
             SetRadio(
-                title = "キャンバスの大きさ",
+                title = stringResource(R.string.canvas_size_title),
                 options = sizeOption,
                 selectedOption = uiState.canvasState.size,
                 onOptionSelected = {
@@ -69,12 +59,12 @@ fun CanvasSec(
                 RadioOption(R.string.canvas_type_2),
                 RadioOption(R.string.canvas_type_3),
                 RadioOption(R.string.canvas_type_4),
-                RadioOption(R.string.option_custom)
+                RadioOption(R.string.option_custom, tag = "canvasTypeCustom")
             )
             val labelTransparent = stringResource(R.string.canvas_type_1)   //透明
             val labelGradient = stringResource(R.string.canvas_type_3)   //グラデーション
             SetRadioText(
-                title = "背景の種類",
+                title = stringResource(R.string.canvas_type_title),
                 options = typeOption,
                 selectedOption = uiState.canvasState.optType,
                 onOptionSelected = {
@@ -92,7 +82,7 @@ fun CanvasSec(
                         )
                     }
                 },
-                example = "新緑の木々が美しい森の中にぽっかり空いた広い空間",
+                example = stringResource(R.string.canvas_type_example),
                 value = uiState.canvasState.type,
                 onValueChange = {
                     viewModel.updateUiState({
@@ -110,7 +100,7 @@ fun CanvasSec(
             if (uiState.canvasState.optType != stringResource(R.string.canvas_type_1)) {
                 Row {
                     SetColor(
-                        title = "背景の色",
+                        title = stringResource(R.string.canvas_color_title),
                         onColorSelected = {
                             viewModel.updateUiState {
                                 copy(
@@ -121,6 +111,7 @@ fun CanvasSec(
                             }
                         },
                         selectedColor = uiState.canvasState.color.toColorOrDefault(),
+//                        modifier = Modifier.testTag("mainColorButton")
                     )
                     Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.p_small)))
                     //グラデーションを選択したときだけ、もう1色選択できるようにする
@@ -138,6 +129,7 @@ fun CanvasSec(
                                 }
                             },
                             selectedColor = uiState.canvasState.color2.toColorOrDefault(),
+                            modifier = Modifier.testTag("subColorButton")
                         )
                     }
                 }
@@ -147,10 +139,10 @@ fun CanvasSec(
                     RadioOption(R.string.canvas_effect_2),
                     RadioOption(R.string.canvas_effect_3),
                     RadioOption(R.string.canvas_effect_4),
-                    RadioOption(R.string.option_custom)
+                    RadioOption(R.string.option_custom, tag = "canvasEffectCustom")
                 )
                 SetRadioText(
-                    title = "背景のエフェクト",
+                    title = stringResource(R.string.canvas_effect_title),
                     options = effectOption,
                     selectedOption = uiState.canvasState.optEffect,
                     onOptionSelected = {
@@ -183,7 +175,7 @@ fun CanvasSec(
                     RadioOption(R.string.canvas_padding_3),
                 )
                 SetRadio(
-                    title = "キャンバスの余白",
+                    title = stringResource(R.string.canvas_padding_title),
                     options = paddingOption,
                     selectedOption = uiState.canvasState.padding,
                     onOptionSelected = {
@@ -203,7 +195,7 @@ fun CanvasSec(
                     RadioOption(R.string.canvas_overlay_3),
                 )
                 SetRadio(
-                    title = "オーバーレイ",
+                    title = stringResource(R.string.canvas_overlay_title),
                     options = overlayOption,
                     selectedOption = uiState.canvasState.overlay,
                     onOptionSelected = { viewModel.updateUiState { copy(canvasState = canvasState.copy(overlay = it)) }}

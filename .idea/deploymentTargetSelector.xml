@@ -13,19 +13,19 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="EasyPromptAppTest">
+      <SelectionState runConfigName="BodySecTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="navigateToPromptScreen_showsBars()">
+      <SelectionState runConfigName="updatesXposWhenOptionSelected() (1)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="backgroundSec_buttonClick()">
+      <SelectionState runConfigName="initialValues()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="resetButton_showsConfirmationDialog()">
+      <SelectionState runConfigName="editButtonClick()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="copyButton_copiesText()">
+      <SelectionState runConfigName="ReviewSecTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

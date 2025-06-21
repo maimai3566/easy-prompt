@@ -1,8 +1,5 @@
 package com.rururi.easyprompt.ui.screen.prompt
 
-import android.R.attr.maxLines
-import android.R.attr.singleLine
-import android.R.attr.textStyle
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -19,13 +16,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -77,6 +74,7 @@ fun ReviewSec(
                 modifier = Modifier
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
+                    .testTag("previewTextField")
             )
             //編集するボタン
             Row(
@@ -87,10 +85,10 @@ fun ReviewSec(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
-                    imageVector = if (isEdit) Icons.Default.Edit else Icons.Default.Check,
+                    imageVector = if (isEdit) Icons.Default.Check else Icons.Default.Edit,
                     contentDescription = if (isEdit) stringResource(R.string.btn_edited) else stringResource(
                         R.string.btn_edit
-                    )
+                    ),
                 )
                 Text(
                     text = if (isEdit) stringResource(R.string.btn_edited) else stringResource(R.string.btn_edit),

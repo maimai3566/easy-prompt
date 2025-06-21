@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.rururi.easyprompt.R
 import com.rururi.easyprompt.ui.screen.RadioOption
@@ -37,7 +38,7 @@ fun ThemeSec(
             RadioOption(R.string.theme_tone_11),
         )
         SetRadio(
-            title = "テーマのトーン・ムード",
+            title = stringResource(R.string.theme_tone_title),
             options = toneOption,
             selectedOption = uiState.themeSetState.tone,
             onOptionSelected = {
@@ -45,8 +46,8 @@ fun ThemeSec(
             }
         )
         SetTextField(
-            title = "キーワード(3,4個程度)",
-            example = "梅雨、4コマ漫画、オフィス、コメディ",
+            title = stringResource(R.string.theme_keyword_title),
+            example = stringResource(R.string.theme_keyword_example),
             value = uiState.themeSetState.keyword,
             onValueChange = { viewModel.updateUiState({ copy(themeSetState = themeSetState.copy(keyword = it)) }) },
             placeholderId = R.string.theme_keyword,

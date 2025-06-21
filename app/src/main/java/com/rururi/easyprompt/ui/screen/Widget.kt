@@ -1,14 +1,9 @@
 package com.rururi.easyprompt.ui.screen
 
 
-import android.R.attr.onClick
-import android.R.attr.text
-import android.app.ProgressDialog.show
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
@@ -18,10 +13,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.AlertDialog
@@ -44,18 +35,23 @@ import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.SemanticsPropertyKey
+import androidx.compose.ui.semantics.SemanticsPropertyReceiver
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.github.skydoves.colorpicker.compose.BrightnessSlider
 import com.github.skydoves.colorpicker.compose.HsvColorPicker
 import com.github.skydoves.colorpicker.compose.rememberColorPickerController
 import com.rururi.easyprompt.R
+import com.rururi.easyprompt.ext.toRgbaString
 import com.rururi.easyprompt.utils.log
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -111,6 +107,9 @@ fun ColorSelectDialog(
     )
 }
 
+val TestColorKey = SemanticsPropertyKey<String>("TestColor")
+var SemanticsPropertyReceiver.testColor: String by TestColorKey
+
 @Composable
 fun SetColor(
     modifier: Modifier = Modifier,
@@ -120,7 +119,11 @@ fun SetColor(
     showTitle:Boolean = true,
 ){
     var showColorDialog by remember { mutableStateOf(false) }
-    Column(modifier = modifier) {
+
+    Column(
+        modifier = modifier
+    ) {
+        log("ボタンの色: ${selectedColor.toRgbaString()}")
         Text(
             text = "■$title",
             style = MaterialTheme.typography.titleLarge,
@@ -133,9 +136,11 @@ fun SetColor(
                 contentColor = if (selectedColor.luminance() >0.5) Color.Black else Color.White,
             ),
             border = BorderStroke(1.dp, Color.Black),
-            modifier = modifier.padding(dimensionResource(R.dimen.p_small))
+            modifier = Modifier
+                .padding(dimensionResource(R.dimen.p_small))
+
         ) {
-            Text(text = "色を選択")
+            Text(text = stringResource(R.string.select_color))
         }
         Spacer(modifier = Modifier.height(dimensionResource(R.dimen.p_medium)))
     }
@@ -176,7 +181,9 @@ fun CommonTextField(
             onNext = { focusManager.moveFocus(FocusDirection.Down) },   //Enterを押したら次の行に移動
             onDone = { focusManager.clearFocus() }  //キーボードを閉じる
         ),
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier
+            .fillMaxWidth()
+            .testTag("commonTextField")
     )
 }
 @Composable
@@ -193,7 +200,9 @@ fun SetTextField(
     Column(modifier=modifier) {
         Text(text = "■$title", style = MaterialTheme.typography.titleLarge)
         Column(modifier = modifier.padding(dimensionResource(R.dimen.p_small))) {
-            if (example.isNotEmpty()) {Text(text = "例）$example")}
+            if (example.isNotEmpty()) {
+                Text(text = "例）$example",modifier = Modifier.testTag("exampleText"))
+            }
             CommonTextField(
                 value = value,
                 onValueChange = onValueChange,
@@ -230,7 +239,9 @@ fun SetRadioText(
             )
             val labelText = stringResource(R.string.option_custom)
             if (selectedOption == labelText) {      //自分で選択を選んだ時にテキストフィールドを表示
-                if (example.isNotEmpty()) {Text(text = "例）$example")}
+                if (example.isNotEmpty()) {
+                    Text(text = "例）$example",modifier = Modifier.testTag("exampleText"))
+                }
                 CommonTextField(
                     value = value,
                     onValueChange = onValueChange,
@@ -276,13 +287,15 @@ fun RadioSelector(
         val rowModifier = Modifier
             .padding(vertical = dimensionResource(R.dimen.p_small))
             .clickable { onOptionSelected(labelText) }
+            .testTag(option.tag)
+            .semantics { this.selected = isSelected }
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = rowModifier
         ) {
             RadioButton(
                 selected = isSelected,
-                onClick = null
+                onClick = null,
             )
             Text(
                 text = stringResource(option.labelResId),
@@ -299,6 +312,11 @@ fun RadioSelector(
     }
 }
 
+//ラジオボタンのデータクラス
+data class RadioOption(
+    val labelResId: Int,          //ラベル多言語対応
+    val tag: String = ""         //テスト対応
+)
 
 //反対色を取得する拡張関数
 fun Color.invert():Color {
@@ -309,10 +327,6 @@ fun Color.invert():Color {
         alpha = alpha
     )
 }
-
-data class RadioOption(
-    val labelResId: Int,          //ラベル多言語対応
-)
 
 @Preview(showBackground = true)
 @Composable
