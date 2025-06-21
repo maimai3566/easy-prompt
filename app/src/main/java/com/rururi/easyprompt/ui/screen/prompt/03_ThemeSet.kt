@@ -1,6 +1,5 @@
 package com.rururi.easyprompt.ui.screen.prompt
 
-import android.R.style.Theme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable

@@ -1,14 +1,6 @@
 package com.rururi.easyprompt.ui.screen.prompt
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.res.stringResource
-import com.rururi.easyprompt.R
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.navigation.NavController
 
 @Composable
@@ -18,7 +10,7 @@ fun PromptScreen(
     viewModel: PromptViewModel,
     uiState: PromptUiState,
 ) {
-    var currentStep = uiState.currentStep
+    val currentStep = uiState.currentStep
 
     when (currentStep) {
         PromptStep.Canvas -> CanvasSec(viewModel=viewModel, uiState = uiState)
