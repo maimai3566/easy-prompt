@@ -1,6 +1,5 @@
 package com.rururi.easyprompt.ui.screen.prompt
 
-import android.R.attr.navigationIcon
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons

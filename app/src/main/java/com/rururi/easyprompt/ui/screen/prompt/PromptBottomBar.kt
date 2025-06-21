@@ -1,7 +1,5 @@
 package com.rururi.easyprompt.ui.screen.prompt
 
-import android.R.attr.onClick
-import android.R.id.message
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,7 +19,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,7 +26,6 @@ import androidx.compose.ui.unit.dp
 import com.rururi.easyprompt.R
 import com.rururi.easyprompt.ui.theme.EasyPromptTheme
 import com.rururi.easyprompt.utils.log
-import kotlinx.coroutines.NonCancellable.isActive
 
 @Composable
 fun PromptBottomBar(
