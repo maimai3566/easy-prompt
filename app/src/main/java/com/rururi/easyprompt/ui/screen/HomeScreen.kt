@@ -63,7 +63,7 @@ fun HomeScreen(
             painter = painterResource(R.drawable.home_image),
             contentDescription = null,
             contentScale = Crop,
-            alpha = 0.3f,
+//            alpha = 0.3f,
             modifier = Modifier.fillMaxSize()
         )
     }

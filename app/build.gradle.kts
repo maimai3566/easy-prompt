@@ -12,12 +12,20 @@ android {
         applicationId = "com.rururi.easyprompt"
         minSdk = 24
         targetSdk = 35
-        versionCode = 1
+        versionCode = 3
         versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("keystore/release.keystore.jks")
+            storePassword = "2412ababyass"
+            keyAlias = "key0"
+            keyPassword = "2412ababyass"
+        }
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -25,6 +33,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {

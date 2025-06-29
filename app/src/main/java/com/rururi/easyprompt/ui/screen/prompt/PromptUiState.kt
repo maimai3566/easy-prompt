@@ -18,6 +18,7 @@ data class PromptUiState(
 data class TitleState(
     val text: String = "",
     val family: String = "",
+    val optFamily: String = "",
     val size: String = "",
     val weight: String = "",
     val color: String = "",
@@ -30,6 +31,7 @@ data class TitleState(
 data class BodyState(
     val text: String = "",
     val family: String = "",
+    val optFamily: String = "",
     val size: String = "",
     val weight: String = "",
     val color: String = "",

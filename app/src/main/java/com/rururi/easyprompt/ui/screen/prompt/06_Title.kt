@@ -49,11 +49,21 @@ fun TitleSec(
                 RadioOption(R.string.title_family_5,"title_family_5"),
                 RadioOption(R.string.option_custom,"option_custom"),
             )
+            val labelCustom = stringResource(R.string.option_custom)
             SetRadioText(
                 title = stringResource(R.string.title_family_title),
                 options = familyOption,
-                selectedOption = uiState.titleState.family,
-                onOptionSelected = { viewModel.updateUiState({ copy(titleState = titleState.copy(family = it)) }) },
+                selectedOption = uiState.titleState.optFamily,
+                onOptionSelected = {
+                    viewModel.updateUiState {
+                        copy(
+                            titleState = titleState.copy(
+                                optFamily = it,    //ラジオボタンで選択した内容
+                                family = if (it != labelCustom) it else uiState.titleState.family,  //ラジオボタンで選択した内容or入力した内容
+                            )
+                        )
+                    }
+                },
                 example = stringResource(R.string.title_family_example),
                 value = uiState.titleState.family,
                 onValueChange = { viewModel.updateUiState({ copy(titleState = titleState.copy(family = it)) }) },

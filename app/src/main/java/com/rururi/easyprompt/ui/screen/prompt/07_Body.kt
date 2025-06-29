@@ -48,11 +48,21 @@ fun BodySec(
                 RadioOption(R.string.title_family_5,"title_family_5"),
                 RadioOption(R.string.option_custom,"option_custom"),
             )
+            val labelCustom = stringResource(R.string.option_custom)
             SetRadioText(
                 title = stringResource(R.string.body_family_title),
                 options = familyOption,
-                selectedOption = uiState.bodyState.family,
-                onOptionSelected = { viewModel.updateUiState({ copy(bodyState = bodyState.copy(family = it)) }) },
+                selectedOption = uiState.bodyState.optFamily,
+                onOptionSelected = {
+                    viewModel.updateUiState{
+                        copy(
+                            bodyState = bodyState.copy(
+                                optFamily = it,
+                                family = if (it != labelCustom) it else uiState.bodyState.family,
+                            )
+                        )
+                    }
+                },
                 example = stringResource(R.string.title_family_example),
                 value = uiState.bodyState.family,
                 onValueChange = { viewModel.updateUiState({ copy(bodyState = bodyState.copy(family = it)) }) },
