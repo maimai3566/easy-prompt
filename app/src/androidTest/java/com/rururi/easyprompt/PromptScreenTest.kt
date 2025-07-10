@@ -1,35 +1,39 @@
 package com.rururi.easyprompt
 
-import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
-import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
+import com.rururi.easyprompt.ui.screen.prompt.*
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import com.rururi.easyprompt.ui.screen.prompt.PromptScreen
-import com.rururi.easyprompt.ui.screen.prompt.PromptViewModel
-import com.rururi.easyprompt.ui.screen.prompt.PromptStep
-import com.rururi.easyprompt.ui.screen.prompt.PromptType
-import com.rururi.easyprompt.ui.screen.prompt.PromptUiState
+import javax.inject.Inject
 
+@HiltAndroidTest
 class PromptScreenTest {
 
-    @get:Rule
-    val composeTestRule = createAndroidComposeRule<ComponentActivity>()
+    @get:Rule(order = 0)
+    var hiltRule = HiltAndroidRule(this)
+
+    @get:Rule(order = 1)
+    val composeTestRule = createAndroidComposeRule<MainActivity>()
+
+    @Inject
+    lateinit var viewModel: PromptViewModel
 
     private lateinit var navController: TestNavHostController
 
     @Before
     fun setup() {
+        hiltRule.inject()
         composeTestRule.setContent {
             navController = TestNavHostController(composeTestRule.activity)
-            navController.navigatorProvider.addNavigator(ComposeNavigator())
             PromptScreen(
                 navController = navController,
                 promptType = PromptType.PERSON,
-                // viewModel = PromptViewModel(),
+                viewModel = viewModel,
                 uiState = PromptUiState(currentStep = PromptStep.Camera)
             )
         }
