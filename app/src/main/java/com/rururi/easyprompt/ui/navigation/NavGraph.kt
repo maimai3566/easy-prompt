@@ -4,28 +4,35 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.rururi.easyprompt.data.UserPreferencesRepository
 import com.rururi.easyprompt.ui.screen.HomeScreen
+import com.rururi.easyprompt.ui.screen.HomeViewModel
 import com.rururi.easyprompt.ui.screen.prompt.PromptScreen
 import com.rururi.easyprompt.ui.screen.prompt.PromptType
 import com.rururi.easyprompt.ui.screen.prompt.PromptViewModel
 
 @Composable
 fun NavGraph(
-    promptViewModel: PromptViewModel,
     navController: NavHostController,
+    userPreferencesRepository: UserPreferencesRepository,
     modifier: Modifier = Modifier
 ) {
+    val promptViewModel: PromptViewModel = hiltViewModel()
     NavHost(
         navController = navController,
         startDestination = Screen.Home.route,
         modifier = modifier
     ){
         composable(route = Screen.Home.route){
+            val homeViewModel: HomeViewModel = hiltViewModel()
+            val isFirstLaunch by homeViewModel.isFirstLaunch.collectAsState()
+
             HomeScreen(
                 onNavigateToPerson = {  //人物中心の処理
                     navController.navigate("prompt/${PromptType.PERSON}")
@@ -41,7 +48,10 @@ fun NavGraph(
                 },
                 onResetAll = { //フルリセット処理
                     promptViewModel.resetAll()
-                }
+                },
+                isFirstLaunch = isFirstLaunch,
+                onDismiss = { homeViewModel.onTutorialDismissed() },
+                onShowTutorialForDebug = { homeViewModel.showTutorialForDebug() }
             )
         }
         composable( //押したボタンによって動的に画面遷移

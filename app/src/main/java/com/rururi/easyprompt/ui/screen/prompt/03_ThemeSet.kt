@@ -6,12 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.rururi.easyprompt.R
 import com.rururi.easyprompt.ui.screen.RadioOption
 import com.rururi.easyprompt.ui.screen.SetRadio
 import com.rururi.easyprompt.ui.screen.SetTextField
-import com.rururi.easyprompt.ui.theme.EasyPromptTheme
 
 @Composable
 fun ThemeSec(
@@ -46,7 +44,8 @@ fun ThemeSec(
         )
         SetTextField(
             title = stringResource(R.string.theme_keyword_title),
-            example = stringResource(R.string.theme_keyword_example),
+//            example = stringResource(R.string.theme_keyword_example),
+
             value = uiState.themeSetState.keyword,
             onValueChange = { viewModel.updateUiState({ copy(themeSetState = themeSetState.copy(keyword = it)) }) },
             placeholderId = R.string.theme_keyword,
@@ -54,14 +53,15 @@ fun ThemeSec(
     }
 }
 
+/*
 @Preview(showBackground = true)
 @Composable
-fun ScreenPreview() {
+fun Step3Preview() {
     EasyPromptTheme {
-        ThemeSec(
-            viewModel = PromptViewModel(),
+        ThemeSetSec(
+            viewModel = MockPromptViewModel(),
             uiState = PromptUiState()
         )
     }
 }
-
+*/

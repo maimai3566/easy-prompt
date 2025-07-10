@@ -1,73 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- ===== アプリ情報 ===== -->
     <string name="app_name">プロンプト作って？</string>
-    <string name="btn_prompt">人物中心のプロンプト</string>
-    <string name="btn_text">文字中心のプロンプト</string>
+    <string name="icon_back">もどる</string>
+    <string name="icon_next">次へ</string>
+    <string name="sc_home">ほーむ</string>
+    <string name="sc_preset">プリセット</string>
+    <string name="sc_prompt">プロンプト</string>
+    <!-- ===== ボタン ===== -->
+    <string name="btn_back">戻る</string>
     <string name="btn_background">背景のみのプロンプト</string>
+    <string name="btn_cancel">キャンセル</string>
+    <string name="btn_copied">コピーした！</string>
+    <string name="btn_copy">コピー</string>
+    <string name="btn_edit">編集</string>
+    <string name="btn_edited">編集中！</string>
     <string name="btn_full_reset">プロンプトをリセット</string>
     <string name="btn_home">ほーむへ戻る</string>
     <string name="btn_next">次へ</string>
-    <string name="btn_skip">スキップ</string>
     <string name="btn_ok">いいよ</string>
-    <string name="btn_cancel">キャンセル</string>
-    <string name="btn_copy">コピー</string>
-    <string name="btn_copied">コピーした！</string>
-    <string name="btn_edit">編集</string>
-    <string name="btn_edited">編集中！</string>
-    <string name="btn_back">戻る</string>
-    <string name="sc_prompt">プロンプト</string>
-    <string name="sc_preset">プリセット</string>
-    <string name="sc_home">ほーむ</string>
-    <string name="icon_back">もどる</string>
-    <string name="icon_next">次へ</string>
-
-    <string name="dialog_title">リセットの確認</string>
-    <string name="dialog_message">現在の設定をリセットします。\nよろしいですか？</string>
+    <string name="btn_prompt">人物中心のプロンプト</string>
+    <string name="btn_skip">スキップ</string>
+    <string name="btn_text">文字中心のプロンプト</string>
+    <!-- ===== ダイアログ ===== -->
     <string name="dialog_cancel">キャンセル</string>
+    <string name="dialog_message">現在の設定をリセットします。
+よろしいですか？</string>
     <string name="dialog_reset">リセット</string>
-
-    <string name="option_custom">自分で設定</string>
-
-    <string name="canvas_size_title">キャンバスの大きさ</string>
-    <string name="canvas_size">キャンバスの大きさを比率で指定</string>
-    <string name="canvas_size_1">1:1</string>
-    <string name="canvas_size_2">9:16</string>
-    <string name="canvas_size_3">16:9</string>
-    <string name="canvas_type_title">背景の種類</string>
-    <string name="canvas_type_1">透明</string>
-    <string name="canvas_type_2">単色</string>
-    <string name="canvas_type_3">グラデーション</string>
-    <string name="canvas_type_4">風景</string>
-    <string name="canvas_type_placeholder">黒地に小さいピンクのドットのパターン</string>
+    <string name="dialog_title">リセットの確認</string>
+    <!-- ===== Canvas ===== -->
     <string name="canvas_color_title">背景の色</string>
-    <string name="canvas_effect_title">背景のエフェクト</string>
     <string name="canvas_effect_1">発光</string>
     <string name="canvas_effect_2">ぼかし</string>
     <string name="canvas_effect_3">ノイズ</string>
     <string name="canvas_effect_4">光の反射</string>
     <string name="canvas_effect_placeholder">下の方から立ち上がる紫の煙</string>
-    <string name="canvas_padding_title">キャンバスの余白</string>
-    <string name="canvas_padding_1">狭い</string>
-    <string name="canvas_padding_2">まぁまぁ</string>
-    <string name="canvas_padding_3">広い</string>
-    <string name="canvas_overlay_title">オーバーレイ</string>
+    <string name="canvas_effect_title">背景のエフェクト</string>
     <string name="canvas_overlay_1">テクスチャ</string>
     <string name="canvas_overlay_2">パターン</string>
     <string name="canvas_overlay_3">画像</string>
-
+    <string name="canvas_overlay_title">オーバーレイ</string>
+    <string name="canvas_padding_1">狭い</string>
+    <string name="canvas_padding_2">まぁまぁ</string>
+    <string name="canvas_padding_3">広い</string>
+    <string name="canvas_padding_title">キャンバスの余白</string>
+    <string name="canvas_size">キャンバスの大きさを比率で指定</string>
+    <string name="canvas_size_1">1:1</string>
+    <string name="canvas_size_2">9:16</string>
+    <string name="canvas_size_3">16:9</string>
+    <string name="canvas_size_title">キャンバスの大きさ</string>
+    <string name="canvas_type_1">透明</string>
+    <string name="canvas_type_2">単色</string>
+    <string name="canvas_type_3">グラデーション</string>
+    <string name="canvas_type_4">風景</string>
+    <string name="canvas_type_example">新緑の木々が美しい森の中にぽっかり空いた広い空間</string>
+    <string name="canvas_type_placeholder">黒地に小さいピンクのドットのパターン</string>
+    <string name="canvas_type_title">背景の種類</string>
+    <!-- ===== Camera ===== -->
     <string name="camera_angle_1">ハイアングル</string>
     <string name="camera_angle_2">アイレベル</string>
     <string name="camera_angle_3">ローアングル</string>
+    <string name="camera_angle_title">カメラの角度</string>
     <string name="camera_distance_1">近い</string>
     <string name="camera_distance_2">中間</string>
     <string name="camera_distance_3">遠い</string>
+    <string name="camera_distance_title">カメラの焦点距離</string>
     <string name="camera_framing_1">クローズアップ</string>
     <string name="camera_framing_2">バストアップ</string>
     <string name="camera_framing_3">全身</string>
+    <string name="camera_framing_title">カメラのフレーミング</string>
     <string name="camera_motion_1">パン</string>
     <string name="camera_motion_2">チルト</string>
     <string name="camera_motion_3">ズーム</string>
-
+    <string name="camera_motion_title">カメラの運動効果</string>
+    <!-- ===== Theme ===== -->
+    <string name="other_theme_1">トーン</string>
+    <string name="other_theme_2">ムード</string>
+    <string name="other_theme_3">キーワード</string>
+    <string name="theme_keyword">宇宙っぽい/楽しい/ミステリアス/ハイファンタジー/レトロ</string>
+    <string name="theme_keyword_example">梅雨、4コマ漫画、オフィス、コメディ</string>
+    <string name="theme_keyword_title">キーワード(3,4個程度)</string>
     <string name="theme_tone_1">明るい</string>
+    <string name="theme_tone_10">自然</string>
+    <string name="theme_tone_11">サイバーチック</string>
     <string name="theme_tone_2">暗い</string>
     <string name="theme_tone_3">鮮やか</string>
     <string name="theme_tone_4">くすんだ</string>
@@ -76,126 +91,145 @@
     <string name="theme_tone_7">モノクロ</string>
     <string name="theme_tone_8">温かみがある</string>
     <string name="theme_tone_9">深みがある</string>
-    <string name="theme_tone_10">自然</string>
-    <string name="theme_tone_11">サイバーチック</string>
-    <string name="theme_keyword">宇宙っぽい/楽しい/ミステリアス/ハイファンタジー/レトロ</string>
-
+    <string name="theme_tone_title">テーマのトーン・ムード</string>
+    <!-- ===== Lighting ===== -->
+    <string name="light_color_1">白</string>
+    <string name="light_color_2">暖色</string>
+    <string name="light_color_3">青</string>
+    <string name="light_color_title">光の色</string>
+    <string name="light_contrast_1">高い</string>
+    <string name="light_contrast_2">標準</string>
+    <string name="light_contrast_3">低い</string>
+    <string name="light_contrast_title">光のコントラスト</string>
+    <string name="light_direction_1">正面</string>
+    <string name="light_direction_2">左</string>
+    <string name="light_direction_3">右</string>
+    <string name="light_direction_4">背後</string>
+    <string name="light_direction_title">光の方向</string>
+    <string name="light_intensity_1">強い</string>
+    <string name="light_intensity_2">標準</string>
+    <string name="light_intensity_3">柔らかい</string>
+    <string name="light_intensity_title">光の強度</string>
     <string name="light_style_1">自然光</string>
     <string name="light_style_2">シネマティック</string>
     <string name="light_style_3">ネオン</string>
     <string name="light_style_4">夕焼け</string>
     <string name="light_style_5">青い時間</string>
-    <string name="light_direction_1">正面</string>
-    <string name="light_direction_2">左</string>
-    <string name="light_direction_3">右</string>
-    <string name="light_direction_4">背後</string>
-    <string name="light_color_1">白</string>
-    <string name="light_color_2">暖色</string>
-    <string name="light_color_3">青</string>
-    <string name="light_intensity_1">強い</string>
-    <string name="light_intensity_2">標準</string>
-    <string name="light_intensity_3">柔らかい</string>
-    <string name="light_contrast_1">高い</string>
-    <string name="light_contrast_2">標準</string>
-    <string name="light_contrast_3">低い</string>
-
+    <string name="light_style_title">ライティングスタイル</string>
+    <!-- ===== Person ===== -->
     <string name="person_appearance">種族/年齢/性別/髪型/肌の色/アクセサリ</string>
-    <string name="person_emotion">笑顔/真剣/泣き/怒り/驚き</string>
-    <string name="person_pose">立っている/座っている/走っている/寝ている</string>
+    <string name="person_appearance_example">妖精の若い女子、色白、ストレートロングの黒髪に星のティアラ、星のピアス</string>
+    <string name="person_appearance_title">外見</string>
+    <string name="person_emotion">心配そう</string>
+    <string name="person_emotion_example">ぷんぷん怒っている</string>
+    <string name="person_emotion_title">表情</string>
+    <string name="person_emotion_1">笑顔</string>
+    <string name="person_emotion_2">真剣</string>
+    <string name="person_emotion_3">泣き</string>
+    <string name="person_emotion_4">怒り</string>
+    <string name="person_emotion_5">驚き</string>
     <string name="person_gaze">カメラ目線/横向き/下を見ている</string>
-    <string name="person_position">真ん中/右側/左側/右上</string>
+    <string name="person_gaze_example">目をつむって上を向いている</string>
+    <string name="person_gaze_title">目線</string>
+    <string name="person_gaze_1">カメラ目線</string>
+    <string name="person_gaze_2">横</string>
+    <string name="person_gaze_3">下</string>
+    <string name="person_gaze_4">上</string>
+    <string name="person_gaze_5">目をつむる</string>
+    <string name="person_gaze_6">遠く</string>
+    <string name="person_pose">腕組みをして立っている</string>
+    <string name="person_pose_example">腕組みをして空中に立って静止</string>
+    <string name="person_pose_title">ポーズ</string>
+    <string name="person_position_example">中央の上</string>
+    <string name="person_position_title">位置</string>
+    <string name="person_position_1">真ん中</string>
+    <string name="person_position_2">右</string>
+    <string name="person_position_3">左</string>
+    <string name="person_position_4">上</string>
+    <string name="person_position_5">下</string>
+    <string name="person_resolution">クレヨン/水墨画/線画</string>
+    <string name="person_resolution_example">高画質</string>
+    <string name="person_resolution_title">タッチ</string>
+    <string name="person_resolution_1">イラスト</string>
+    <string name="person_resolution_2">リアル</string>
+    <string name="person_resolution_3">フラット</string>
+    <string name="person_resolution_4">アニメ</string>
+    <string name="person_resolution_5">水彩画</string>
+    <string name="person_resolution_6">色鉛筆</string>
     <string name="person_style">カジュアル/パンツスーツ/着物/Tシャツ短パン</string>
-    <string name="person_resolution">高精細/イラスト風/フラット/アニメ風/ぼかし</string>
-
-    <string name="other_theme_1">トーン</string>
-    <string name="other_theme_2">ムード</string>
-    <string name="other_theme_3">キーワード</string>
-
-    <string name="title_text">キャンペーン開催します！</string>
-    <string name="title_placeholder">しっぽり明朝</string>
+    <string name="person_style_example">白いTシャツにデニムのショートパンツにスニーカー</string>
+    <string name="person_style_title">服装</string>
+    <!-- ===== Title ===== -->
+    <string name="title_color_title">タイトルの色</string>
     <string name="title_family_1">MSゴシック</string>
     <string name="title_family_2">メイリオ</string>
     <string name="title_family_3">ヒラギノ角ゴシック</string>
     <string name="title_family_4">游ゴシック</string>
     <string name="title_family_5">Noto Sans</string>
-    <string name="title_size_1">小さめ</string>
-    <string name="title_size_2">標準</string>
-    <string name="title_size_3">大きめ</string>
-    <string name="title_weight_1">標準</string>
-    <string name="title_weight_2">太い</string>
-    <string name="title_xpos_1">左</string>
-    <string name="title_xpos_2">真ん中</string>
-    <string name="title_xpos_3">右</string>
-    <string name="title_ypos_1">上</string>
-    <string name="title_ypos_2">真ん中</string>
-    <string name="title_ypos_3">下</string>
+    <string name="title_family_example">くるくるしたフォント</string>
+    <string name="title_family_title">タイトルのフォント</string>
     <string name="title_height_1">低い</string>
     <string name="title_height_2">標準</string>
     <string name="title_height_3">高い</string>
+    <string name="title_height_title">タイトルの高さ</string>
+    <string name="title_placeholder">しっぽり明朝</string>
+    <string name="title_size_1">小さめ</string>
+    <string name="title_size_2">標準</string>
+    <string name="title_size_3">大きめ</string>
+    <string name="title_size_title">タイトルのサイズ</string>
     <string name="title_spacing_1">狭い</string>
     <string name="title_spacing_2">標準</string>
     <string name="title_spacing_3">広い</string>
-
+    <string name="title_spacing_title">タイトルの行間</string>
+    <string name="title_text">キャンペーン開催します！</string>
+    <string name="title_text_title">タイトルを決めてください</string>
+    <string name="title_weight_1">標準</string>
+    <string name="title_weight_2">太い</string>
+    <string name="title_weight_title">タイトルの太さ</string>
+    <string name="title_xpos_1">左</string>
+    <string name="title_xpos_2">真ん中</string>
+    <string name="title_xpos_3">右</string>
+    <string name="title_xpos_title">タイトルの水平位置</string>
+    <string name="title_ypos_1">上</string>
+    <string name="title_ypos_2">真ん中</string>
+    <string name="title_ypos_3">下</string>
+    <string name="title_ypos_title">タイトルの垂直位置</string>
+    <!-- ===== Body ===== -->
+    <string name="body_color_title">本文の色</string>
+    <string name="body_family_title">本文のフォント</string>
+    <string name="body_height_title">本文の高さ</string>
+    <string name="body_size_title">本文のサイズ</string>
+    <string name="body_spacing_title">本文の行間</string>
     <string name="body_text">詳細は以下チラシをご覧ください。</string>
-
-    <string name="logo_yes">ロゴにする</string>
+    <string name="body_text_title">本文を入力してください。</string>
+    <string name="body_weight_title">本文の太さ</string>
+    <string name="body_xpos_title">本文の水平位置</string>
+    <string name="body_ypos_title">本文の垂直位置</string>
+    <!-- ===== Logo ===== -->
     <string name="logo_no">ロゴにしない</string>
     <string name="logo_xpos_1">左</string>
     <string name="logo_xpos_2">真ん中</string>
     <string name="logo_xpos_3">右</string>
+    <string name="logo_yes">ロゴにする</string>
     <string name="logo_ypos_1">上</string>
     <string name="logo_ypos_2">真ん中</string>
     <string name="logo_ypos_3">下</string>
-
-    <string name="preview_title">プロンプト完成～💗</string>
+    <!-- ===== Preview ===== -->
     <string name="preview_memo_1">*プロンプトは編集ボタンで直接編集できます</string>
-    <string name="preview_memo_2">*コピーボタンでプロンプトをコピーして\n 生成AIのプロンプトに貼り付けてね★</string>
-
+    <string name="preview_memo_2">*コピーボタンでプロンプトをコピーして\n
+ 生成AIのプロンプトに貼り付けてね★</string>
+    <string name="preview_title">プロンプト完成～💗</string>
+    <!-- ===== 初回チュートリアル ===== -->
+    <string name="first_detail">このアプリは、簡単な操作で画像生成AI用のプロンプトを作成できます。</string>
+    <string name="first_func">・人物中心：背景と人物を設定\n
+・文字中心：背景と文字を設定\n
+・背景のみ：背景のみを設定\n
+\n
+3つのボタンから、作成したいプロンプトの種類を選んでください。\n
+最後にYAML形式でプロンプトを出力します。\n
+コピーして画像生成AIのプロンプト入力欄に貼り付けて使ってね！</string>
+    <string name="first_title">ようこそ！</string>
+    <!-- ===== 共通/その他 ===== -->
+    <string name="option_custom">自分で設定</string>
     <string name="select_color">色を選択</string>
-    <string name="canvas_type_example">新緑の木々が美しい森の中にぽっかり空いた広い空間</string>
-    <string name="camera_angle_title">カメラの角度</string>
-    <string name="camera_distance_title">カメラの焦点距離</string>
-    <string name="camera_framing_title">カメラのフレーミング</string>
-    <string name="camera_motion_title">カメラの運動効果</string>
-    <string name="theme_tone_title">テーマのトーン・ムード</string>
-    <string name="theme_keyword_title">キーワード(3,4個程度)</string>
-    <string name="theme_keyword_example">梅雨、4コマ漫画、オフィス、コメディ</string>
-    <string name="person_appearance_title">外見</string>
-    <string name="person_appearance_example">妖精の若い女子、色白、ストレートロングの黒髪に星のティアラ、星のピアス</string>
-    <string name="person_emotion_title">表情</string>
-    <string name="person_emotion_example">ぷんぷん怒っている</string>
-    <string name="person_pose_title">ポーズ</string>
-    <string name="person_pose_example">腕組みをして空中に立って静止</string>
-    <string name="person_gaze_title">目線</string>
-    <string name="person_gaze_example">目をつむって上を向いている</string>
-    <string name="person_position_title">位置</string>
-    <string name="person_position_example">中央の上</string>
-    <string name="person_style_title">スタイル</string>
-    <string name="person_style_example">白いTシャツにデニムのショートパンツにスニーカー</string>
-    <string name="person_resolution_title">解像度</string>
-    <string name="person_resolution_example">高画質</string>
-    <string name="light_style_title">ライティングスタイル</string>
-    <string name="light_direction_title">光の方向</string>
-    <string name="light_color_title">光の色</string>
-    <string name="light_intensity_title">光の強度</string>
-    <string name="light_contrast_title">光のコントラスト</string>
-    <string name="title_text_title">タイトルを決めてください</string>
-    <string name="title_family_title">タイトルのフォント</string>
-    <string name="title_size_title">タイトルのサイズ</string>
-    <string name="title_weight_title">タイトルの太さ</string>
-    <string name="title_color_title">タイトルの色</string>
-    <string name="title_xpos_title">タイトルの水平位置</string>
-    <string name="title_ypos_title">タイトルの垂直位置</string>
-    <string name="title_height_title">タイトルの高さ</string>
-    <string name="title_spacing_title">タイトルの行間</string>
-    <string name="body_text_title">本文を入力してください。</string>
-    <string name="body_family_title">本文のフォント</string>
-    <string name="body_size_title">本文のサイズ</string>
-    <string name="body_weight_title">本文の太さ</string>
-    <string name="body_color_title">本文の色</string>
-    <string name="body_xpos_title">本文の水平位置</string>
-    <string name="body_ypos_title">本文の垂直位置</string>
-    <string name="body_height_title">本文の高さ</string>
-    <string name="body_spacing_title">本文の行間</string>
-    <string name="title_family_example">くるくるしたフォント</string>
 </resources>

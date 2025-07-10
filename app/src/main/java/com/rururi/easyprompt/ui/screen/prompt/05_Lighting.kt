@@ -13,6 +13,7 @@ import com.rururi.easyprompt.ext.toRgbaString
 import com.rururi.easyprompt.ui.screen.RadioOption
 import com.rururi.easyprompt.ui.screen.SetColor
 import com.rururi.easyprompt.ui.screen.SetRadio
+import com.rururi.easyprompt.ui.screen.prompt.MockPromptViewModel
 import com.rururi.easyprompt.ui.theme.EasyPromptTheme
 
 @Composable
@@ -84,10 +85,12 @@ fun LightingSec(
     }
 }
 
+/*
 @Preview(showBackground = true)
 @Composable
-fun Step3Preview(){
+fun LightingSecPreview(){
     EasyPromptTheme {
-        LightingSec(viewModel = PromptViewModel(), uiState = PromptUiState())
+        LightingSec(viewModel = MockPromptViewModel(), uiState = PromptUiState())
     }
 }
+*/

@@ -38,9 +38,17 @@ fun HomeScreen(
     onNavigateToPerson: () -> Unit = {},
     onNavigateToText: () -> Unit = {},
     onNavigateToBackground: () -> Unit = {},
-    onResetAll: () -> Unit = {}
+    onResetAll: () -> Unit = {},
+    isFirstLaunch: Boolean,
+    onDismiss: () -> Unit,
+    onShowTutorialForDebug: () -> Unit = {}
 ) {
     var showDialog by remember { mutableStateOf(false) }
+
+    //初回起動判断・・・起動していなかったらダイアログ出す
+    if (isFirstLaunch) {
+        FirstLaunchDialog(onDismiss = onDismiss)
+    }
 
     //フルリセット時の確認ダイアログ
     if (showDialog) {
@@ -106,7 +114,7 @@ fun HomeScreen(
             )
         }
         Text(
-            text = "すべての設定は「任意」です。\n不要であれば「次へ」ボタンで飛ばしてください。",
+            text = "すべての設定は「任意」です.\n不要であれば「次へ」ボタンで飛ばしてください.",
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.padding(dimensionResource(R.dimen.p_large))
         )
@@ -118,7 +126,53 @@ fun HomeScreen(
             )
         }
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.p_medium)))
+
+        // TODO: リリース前にこのボタンを削除すること
+//        Button(onClick = onShowTutorialForDebug) {
+//            Text(text = "Debug: Show Tutorial")
+//        }
+//        Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.p_medium)))
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun FirstLaunchDialog(onDismiss: () -> Unit) {
+    BasicAlertDialog(
+        onDismissRequest = onDismiss,
+        content = {
+            Surface(
+                shape = MaterialTheme.shapes.small,
+                color = MaterialTheme.colorScheme.surface,
+                tonalElevation = dimensionResource(R.dimen.p_small)
+            ) {
+                Column(
+                    modifier = Modifier.padding(dimensionResource(R.dimen.p_medium))
+                ) {
+                    Text(
+                        text = stringResource(R.string.first_title),
+                        style = MaterialTheme.typography.titleLarge
+                    )
+                    Text(
+                        text = stringResource(R.string.first_detail),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.p_medium)))
+                    Text(
+                        text = stringResource(R.string.first_func),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.p_medium)))
+                    Button(onClick = onDismiss) {
+                        Text(
+                            text = "閉じる",
+                            style = MaterialTheme.typography.titleLarge
+                        )
+                    }
+                }
+            }
+        }
+    )
 }
 
 @Composable
@@ -163,6 +217,15 @@ fun ResetDialogContent(
         }
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun FirstLaunchDialogPreview() {
+    EasyPromptTheme {
+        FirstLaunchDialog(onDismiss = {})
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DialogPreview() {
@@ -170,10 +233,12 @@ fun DialogPreview() {
         ResetDialogContent(onDismiss = {}, onConfirm = {})
     }
 }
+/*
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
     EasyPromptTheme {
-        HomeScreen()
+        HomeScreen(isFirstLaunch = true, onDismiss = {}, onNavigateToPerson = {}, onNavigateToText = {}, onNavigateToBackground = {}, onResetAll = {}, onShowTutorialForDebug = {})
     }
 }
+*/

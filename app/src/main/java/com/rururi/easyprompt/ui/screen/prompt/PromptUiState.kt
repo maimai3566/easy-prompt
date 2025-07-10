@@ -81,6 +81,8 @@ data class PersonState(
     val position: String = "",
     val style: String = "",
     val resolution: String = "",
+    val optEmotion: String = "",
+    val optResolution: String = "",
 )
 
 

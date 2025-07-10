@@ -12,11 +12,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.rururi.easyprompt.data.UserPreferencesRepository
 import com.rururi.easyprompt.ui.navigation.NavGraph
 import com.rururi.easyprompt.ui.navigation.Screen
 import com.rururi.easyprompt.ui.screen.prompt.PromptBottomBar
@@ -26,7 +27,10 @@ import com.rururi.easyprompt.ui.theme.EasyPromptTheme
 import kotlinx.coroutines.delay
 
 @Composable
-fun EasyPromptApp(promptViewModel: PromptViewModel = viewModel()) {
+fun EasyPromptApp(
+    userPreferencesRepository: UserPreferencesRepository,
+    promptViewModel: PromptViewModel
+) {
     val uiState by promptViewModel.uiState.collectAsState()
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState() //直前の画面
@@ -76,16 +80,18 @@ fun EasyPromptApp(promptViewModel: PromptViewModel = viewModel()) {
     ) { padding ->
         NavGraph(
             navController = navController,
-            promptViewModel = promptViewModel,
+            userPreferencesRepository = userPreferencesRepository,
             modifier = Modifier.padding(padding)
         )
     }
 }
 
+/*
 @Preview(showBackground = true)
 @Composable
 fun EasyPromptAppPreview() {
     EasyPromptTheme {
-        EasyPromptApp()
+        EasyPromptApp(UserPreferencesRepository(LocalContext.current))
     }
 }
+*/

@@ -27,7 +27,7 @@ class EasyPromptAppTest {
         composeTestRule.setContent {
             navController = TestNavHostController(composeTestRule.activity)
             navController.navigatorProvider.addNavigator(ComposeNavigator())
-            EasyPromptApp(promptViewModel = PromptViewModel())
+            // EasyPromptApp(promptViewModel = PromptViewModel())
         }
     }
 

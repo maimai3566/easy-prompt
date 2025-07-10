@@ -114,6 +114,7 @@ fun PromptBottomBar(
     }
 }
 
+/*
 @Preview(showBackground = true)
 @Composable
 fun PromptBottomBarPreview() {
@@ -128,3 +129,4 @@ fun PromptBottomBarPreview() {
         )
     }
 }
+*/

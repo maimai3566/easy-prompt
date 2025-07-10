@@ -1,32 +1,35 @@
 package com.rururi.easyprompt.ui.screen.prompt
 
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 
-class PromptViewModel:ViewModel() {
+@HiltViewModel
+open class PromptViewModel @Inject constructor():ViewModel() {
     private val _uiState = MutableStateFlow(PromptUiState())
-    val uiState: StateFlow<PromptUiState> = _uiState.asStateFlow()
+    open val uiState: StateFlow<PromptUiState> = _uiState.asStateFlow()
 
     //汎用の更新関数
-    fun updateUiState(update: PromptUiState.() -> PromptUiState) {
+    open fun updateUiState(update: PromptUiState.() -> PromptUiState) {
         _uiState.update { it.update() }
     }
 
     //現在のプロンプトタイプに応じたステップをリスト化
-    fun stepList(): List<PromptStep> {
+    open fun stepList(): List<PromptStep> {
         return promptStepMap[_uiState.value.promptType] ?: emptyList()
     }
 
     //現在のプロンプトを全部初期化
-    fun resetAll() {
+    open fun resetAll() {
         _uiState.value = PromptUiState()    //全状態を初期化
     }
 
     //現在のプロンプトタイプ、現在のステップなどを初期化（リセット）
-    fun reset() {
+    open fun reset() {
         val defaultType = PromptType.PERSON
         val firstStep = promptStepMap[defaultType]?.firstOrNull() ?: PromptStep.Canvas
         _uiState.update {
@@ -36,7 +39,7 @@ class PromptViewModel:ViewModel() {
             )
         }
     }
-    fun nextStep() {
+    open fun nextStep() {
         val steps = stepList()
         val current = _uiState.value.currentStep    //現在のステップ
         val currentIndex = steps.indexOf(current)    //現在のステップのインデックス
@@ -58,7 +61,7 @@ class PromptViewModel:ViewModel() {
         }
     }
 
-    fun prevStep() {
+    open fun prevStep() {
         val steps = stepList()
         val current = _uiState.value.currentStep    //現在のステップ
         val currentIndex = steps.indexOf(current)    //現在のステップのインデックス
@@ -72,11 +75,11 @@ class PromptViewModel:ViewModel() {
     }
 
     //追加したYAML文がブランクだったら追加しない拡張関数
-    fun String.toYamlLine(key:String, indent: Int = 4):String? =
+    open fun String.toYamlLine(key:String, indent: Int = 4):String? =
         takeIf { it.isNotEmpty() }?.let{ " ".repeat(indent) + "$key: \"$it\""}
 
     //YAML出力
-    fun buildYaml(): String {
+    open fun buildYaml(): String {
         val sb = StringBuilder()    //文字列をどんどん追加して組み立てるクラス
         val state = _uiState.value
 
@@ -183,4 +186,3 @@ class PromptViewModel:ViewModel() {
         return sb.toString()
     }
 }
-

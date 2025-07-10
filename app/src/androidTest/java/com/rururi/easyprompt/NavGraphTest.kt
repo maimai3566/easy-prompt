@@ -24,7 +24,7 @@ class NavGraphTest {
     @Before
     fun setupNavGraph() {
         composeTestRule.setContent {
-            viewModel = PromptViewModel()
+            // viewModel = PromptViewModel()
             navController = TestNavHostController(composeTestRule.activity)
             navController.navigatorProvider.addNavigator(ComposeNavigator())
             NavGraph(

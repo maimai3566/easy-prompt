@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -42,6 +44,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+        languageVersion = "2.0"
     }
     buildFeatures {
         compose = true
@@ -49,6 +52,15 @@ android {
 }
 
 dependencies {
+    //Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
+    //Hiltテスト用
+    androidTestImplementation(libs.hilt.testing)
+    kaptAndroidTest(libs.hilt.compiler)
+
+
     //カラーピッカー
     implementation(libs.compose.colorpicker)
     //ナビゲーション
@@ -57,6 +69,9 @@ dependencies {
     //M3関係
     implementation(libs.androidx.material.icons.extended)   //アイコンを使用する場合
     debugImplementation(libs.ui.tooling)    //プレビュー用
+
+    // DataStore
+    implementation(libs.androidx.datastore.preferences)
 
     //デフォルト
     implementation(libs.androidx.core.ktx)
@@ -74,4 +89,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+}
+
+kapt {
+    correctErrorTypes = true
 }

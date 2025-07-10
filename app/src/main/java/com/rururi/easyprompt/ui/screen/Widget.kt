@@ -190,7 +190,7 @@ fun CommonTextField(
 fun SetTextField(
     modifier: Modifier = Modifier,
     title:String,
-    example:String,
+//    example:String,
     value: String,
     onValueChange: (String) -> Unit,
     placeholderId:Int,
@@ -200,9 +200,6 @@ fun SetTextField(
     Column(modifier=modifier) {
         Text(text = "■$title", style = MaterialTheme.typography.titleLarge)
         Column(modifier = modifier.padding(dimensionResource(R.dimen.p_small))) {
-            if (example.isNotEmpty()) {
-                Text(text = "例）$example",modifier = Modifier.testTag("exampleText"))
-            }
             CommonTextField(
                 value = value,
                 onValueChange = onValueChange,
@@ -222,7 +219,7 @@ fun SetRadioText(
     options: List<RadioOption>,
     selectedOption: String,
     onOptionSelected: (String) -> Unit,
-    example:String,
+//    example:String,
     value: String,
     onValueChange: (String) -> Unit,
     placeholderId:Int,
@@ -239,9 +236,6 @@ fun SetRadioText(
             )
             val labelText = stringResource(R.string.option_custom)
             if (selectedOption == labelText) {      //自分で選択を選んだ時にテキストフィールドを表示
-                if (example.isNotEmpty()) {
-                    Text(text = "例）$example",modifier = Modifier.testTag("exampleText"))
-                }
                 CommonTextField(
                     value = value,
                     onValueChange = onValueChange,

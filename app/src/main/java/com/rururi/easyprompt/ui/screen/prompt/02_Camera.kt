@@ -85,10 +85,14 @@ fun CameraSec(
     }
 }
 
+/*
+/*
 @Preview(showBackground = true)
 @Composable
 fun Step2Preview(){
     EasyPromptTheme {
-        CameraSec(viewModel = PromptViewModel(), uiState = PromptUiState())
+        CameraSec(viewModel = MockPromptViewModel(), uiState = PromptUiState())
     }
 }
+*/
+*/

@@ -48,6 +48,7 @@ fun PromptTopBar(
     )
 }
 
+/*
 @Preview(showBackground = true)
 @Composable
 fun PromptTopBarPreview() {
@@ -58,3 +59,4 @@ fun PromptTopBarPreview() {
         )
     }
 }
+*/

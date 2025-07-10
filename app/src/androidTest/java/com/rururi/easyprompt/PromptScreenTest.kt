@@ -29,7 +29,7 @@ class PromptScreenTest {
             PromptScreen(
                 navController = navController,
                 promptType = PromptType.PERSON,
-                viewModel = PromptViewModel(),
+                // viewModel = PromptViewModel(),
                 uiState = PromptUiState(currentStep = PromptStep.Camera)
             )
         }

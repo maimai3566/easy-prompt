@@ -1,13 +1,13 @@
 package com.rururi.easyprompt.ui.screen.prompt
 
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.rururi.easyprompt.R
 import com.rururi.easyprompt.ext.toColorOrDefault
 import com.rururi.easyprompt.ext.toRgbaString
@@ -16,7 +16,6 @@ import com.rururi.easyprompt.ui.screen.SetColor
 import com.rururi.easyprompt.ui.screen.SetRadio
 import com.rururi.easyprompt.ui.screen.SetRadioText
 import com.rururi.easyprompt.ui.screen.SetTextField
-import com.rururi.easyprompt.ui.theme.EasyPromptTheme
 
 @Composable
 fun BodySec(
@@ -28,11 +27,12 @@ fun BodySec(
         modifier = modifier
             .padding(dimensionResource(R.dimen.p_small))
             .fillMaxSize()
+            .imePadding()
     ) {
         item {
             SetTextField(
                 title = stringResource(R.string.body_text_title),
-                example = "",
+//                example = "",
                 value = uiState.bodyState.text,
                 onValueChange = { viewModel.updateUiState({ copy(bodyState = bodyState.copy(text = it)) }) },
                 placeholderId = R.string.body_text,
@@ -63,7 +63,7 @@ fun BodySec(
                         )
                     }
                 },
-                example = stringResource(R.string.title_family_example),
+//                example = stringResource(R.string.title_family_example),
                 value = uiState.bodyState.family,
                 onValueChange = { viewModel.updateUiState({ copy(bodyState = bodyState.copy(family = it)) }) },
                 placeholderId = R.string.title_placeholder,
@@ -147,10 +147,12 @@ fun BodySec(
     }
 }
 
+/*
 @Preview(showBackground = true)
 @Composable
 fun BodySecPreview() {
     EasyPromptTheme {
-        BodySec(viewModel = PromptViewModel(), uiState = PromptUiState())
+        BodySec(viewModel = MockPromptViewModel(), uiState = PromptUiState())
     }
 }
+*/

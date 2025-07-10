@@ -1,6 +1,7 @@
 package com.rururi.easyprompt.ui.screen.prompt
 
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -29,13 +30,14 @@ fun TitleSec(
         modifier = modifier
             .padding(dimensionResource(R.dimen.p_small))
             .fillMaxSize()
+            .imePadding()
             .testTag("titleLazyColumn")
     ) {
 
         item {
             SetTextField(
                 title = stringResource(R.string.title_text_title),
-                example = "",
+//                example = "",
                 value = uiState.titleState.text,
                 onValueChange = { viewModel.updateUiState({ copy(titleState = titleState.copy(text = it)) }) },
                 placeholderId = R.string.title_text,
@@ -64,7 +66,7 @@ fun TitleSec(
                         )
                     }
                 },
-                example = stringResource(R.string.title_family_example),
+//                example = stringResource(R.string.title_family_example),
                 value = uiState.titleState.family,
                 onValueChange = { viewModel.updateUiState({ copy(titleState = titleState.copy(family = it)) }) },
                 placeholderId = R.string.title_placeholder,
@@ -150,10 +152,11 @@ fun TitleSec(
     }
 }
 
+
 @Preview(showBackground = true)
 @Composable
 fun TitleSecPreview() {
     EasyPromptTheme {
-        TitleSec(viewModel = PromptViewModel(), uiState = PromptUiState())
+        TitleSec(viewModel = MockPromptViewModel(), uiState = PromptUiState())
     }
 }

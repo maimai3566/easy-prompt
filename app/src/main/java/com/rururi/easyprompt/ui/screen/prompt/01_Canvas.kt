@@ -2,6 +2,8 @@ package com.rururi.easyprompt.ui.screen.prompt
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
@@ -30,6 +32,8 @@ fun CanvasSec(
     LazyColumn(
         modifier = modifier
             .padding(dimensionResource(R.dimen.p_small))
+            .fillMaxSize()
+            .imePadding()
     ){
         item {
             val labelText = stringResource(R.string.option_custom)  //自分で設定
@@ -82,7 +86,7 @@ fun CanvasSec(
                         )
                     }
                 },
-                example = stringResource(R.string.canvas_type_example),
+//                example = stringResource(R.string.canvas_type_example),
                 value = uiState.canvasState.type,
                 onValueChange = {
                     viewModel.updateUiState({
@@ -155,7 +159,7 @@ fun CanvasSec(
                             )
                         }
                     },
-                    example = "キラキラ輝く",
+//                    example = "キラキラ輝く",
                     value = uiState.canvasState.effect,
                     onValueChange = {
                         viewModel.updateUiState({
@@ -206,10 +210,11 @@ fun CanvasSec(
     }
 }
 
+
 @Preview(showBackground = true)
 @Composable
 fun Step1Preview() {
     EasyPromptTheme {
-        CanvasSec(viewModel = PromptViewModel(), uiState = PromptUiState())
+        CanvasSec(viewModel = MockPromptViewModel(), uiState = PromptUiState())
     }
 }
