@@ -1,6 +1,7 @@
 package com.rururi.easyprompt.ui.screen.prompt
 
 import androidx.lifecycle.ViewModel
+import com.rururi.easyprompt.utils.log
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,6 +14,9 @@ open class PromptViewModel @Inject constructor():ViewModel() {
     private val _uiState = MutableStateFlow(PromptUiState())
     open val uiState: StateFlow<PromptUiState> = _uiState.asStateFlow()
 
+    init {
+        log("本物のViewModel")
+    }
     //汎用の更新関数
     open fun updateUiState(update: PromptUiState.() -> PromptUiState) {
         _uiState.update { it.update() }

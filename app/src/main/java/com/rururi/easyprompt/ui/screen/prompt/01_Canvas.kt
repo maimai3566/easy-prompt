@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.rururi.easyprompt.R
 import com.rururi.easyprompt.ext.toColorOrDefault
 import com.rururi.easyprompt.ext.toRgbaString
@@ -20,7 +19,6 @@ import com.rururi.easyprompt.ui.screen.RadioOption
 import com.rururi.easyprompt.ui.screen.SetColor
 import com.rururi.easyprompt.ui.screen.SetRadio
 import com.rururi.easyprompt.ui.screen.SetRadioText
-import com.rururi.easyprompt.ui.theme.EasyPromptTheme
 
 
 @Composable
@@ -211,10 +209,10 @@ fun CanvasSec(
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun Step1Preview() {
-    EasyPromptTheme {
-        CanvasSec(viewModel = MockPromptViewModel(), uiState = PromptUiState())
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun Step1Preview() {
+//    EasyPromptTheme {
+//        CanvasSec(viewModel = MockPromptViewModel(), uiState = PromptUiState())
+//    }
+//}

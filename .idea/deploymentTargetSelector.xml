@@ -13,19 +13,19 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="BodySecTest">
+      <SelectionState runConfigName="showsResolutionOption()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="updatesXposWhenOptionSelected() (1)">
+      <SelectionState runConfigName="updatesResolutionWhenOptionSelected()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="initialValues()">
+      <SelectionState runConfigName="showsPositionOption()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="editButtonClick()">
+      <SelectionState runConfigName="CameraSecTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="ReviewSecTest">
+      <SelectionState runConfigName="updatesPersonResolutionWhenOptionSelected()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

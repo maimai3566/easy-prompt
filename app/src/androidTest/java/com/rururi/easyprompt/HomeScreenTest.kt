@@ -4,11 +4,11 @@ import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import com.rururi.easyprompt.ui.screen.HomeScreen
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import com.rururi.easyprompt.ui.screen.HomeScreen
 
 class HomeScreenTest {
 
@@ -27,7 +27,10 @@ class HomeScreenTest {
                 onNavigateToPerson = { personClicked = true },
                 onNavigateToText = { textClicked = true },
                 onNavigateToBackground = { backgroundClicked = true },
-                onResetAll = { resetCalled = true }
+                onResetAll = { resetCalled = true },
+                isFirstLaunch = true,
+                onDismiss = {},
+                onShowTutorialForDebug = {}
             )
         }
     }

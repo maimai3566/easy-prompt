@@ -280,7 +280,9 @@ fun RadioSelector(
         val isSelected = labelText == selectedOption //自分が選択されたかどうか
         val rowModifier = Modifier
             .padding(vertical = dimensionResource(R.dimen.p_small))
-            .clickable { onOptionSelected(labelText) }
+            .clickable {
+                log("クリックした！！！: $labelText")
+                onOptionSelected(labelText) }
             .testTag(option.tag)
             .semantics { this.selected = isSelected }
         Row(

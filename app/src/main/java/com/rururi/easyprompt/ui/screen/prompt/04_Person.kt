@@ -8,13 +8,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.rururi.easyprompt.R
 import com.rururi.easyprompt.ui.screen.RadioOption
 import com.rururi.easyprompt.ui.screen.SetRadio
 import com.rururi.easyprompt.ui.screen.SetRadioText
 import com.rururi.easyprompt.ui.screen.SetTextField
-import com.rururi.easyprompt.ui.theme.EasyPromptTheme
+import com.rururi.easyprompt.utils.log
 
 @Composable
 fun PersonSec(
@@ -98,7 +97,7 @@ fun PersonSec(
                     RadioOption(R.string.person_position_2),
                     RadioOption(R.string.person_position_3),
                     RadioOption(R.string.person_position_4),
-                    RadioOption(R.string.person_position_5),
+                    RadioOption(R.string.person_position_5,tag = "pos5"),
                 ),
                 selectedOption = uiState.personState.position,
                 onOptionSelected = {viewModel.updateUiState({ copy(personState = personState.copy(position = it)) })},
@@ -116,6 +115,7 @@ fun PersonSec(
                 ),
                 selectedOption = uiState.personState.optResolution,
                 onOptionSelected = {
+                    log("onOptionSelected: $it")
                     viewModel.updateUiState {
                         copy(
                             personState = personState.copy(
@@ -129,28 +129,15 @@ fun PersonSec(
                 onValueChange = { viewModel.updateUiState({ copy(personState = personState.copy(resolution = it)) }) },
                 placeholderId = R.string.person_resolution,
             )
-//            SetRadio(
-//                title = stringResource(R.string.person_resolution_title),
-//                options = listOf(
-//                    RadioOption(R.string.person_resolution_1),
-//                    RadioOption(R.string.person_resolution_2),
-//                    RadioOption(R.string.person_resolution_3),
-//                    RadioOption(R.string.person_resolution_4),
-//                    RadioOption(R.string.person_resolution_5),
-//                ),
-//                selectedOption = uiState.personState.resolution,
-//                onOptionSelected = {viewModel.updateUiState({ copy(personState = personState.copy(resolution = it)) })},
-//            )
-
         }
     }
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun Step4Preview(){
-    EasyPromptTheme {
-        PersonSec(viewModel = MockPromptViewModel(), uiState = PromptUiState())
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun Step4Preview(){
+//    EasyPromptTheme {
+//        PersonSec(viewModel = MockPromptViewModel(), uiState = PromptUiState())
+//    }
+//}

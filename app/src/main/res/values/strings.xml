@@ -133,8 +133,8 @@
     <string name="person_gaze_title">目線</string>
     <string name="person_gaze_1">カメラ目線</string>
     <string name="person_gaze_2">横</string>
-    <string name="person_gaze_3">下</string>
-    <string name="person_gaze_4">上</string>
+    <string name="person_gaze_3">上</string>
+    <string name="person_gaze_4">下</string>
     <string name="person_gaze_5">目をつむる</string>
     <string name="person_gaze_6">遠く</string>
     <string name="person_pose">腕組みをして立っている</string>
