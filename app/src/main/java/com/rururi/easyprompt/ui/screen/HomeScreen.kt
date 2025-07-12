@@ -41,7 +41,7 @@ fun HomeScreen(
     onResetAll: () -> Unit = {},
     isFirstLaunch: Boolean,
     onDismiss: () -> Unit,
-    onShowTutorialForDebug: () -> Unit = {}
+//    onShowTutorialForDebug: () -> Unit = {}
 ) {
     var showDialog by remember { mutableStateOf(false) }
 

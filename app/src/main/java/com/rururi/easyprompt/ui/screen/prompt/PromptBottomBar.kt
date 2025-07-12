@@ -21,11 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.rururi.easyprompt.R
-import com.rururi.easyprompt.ui.theme.EasyPromptTheme
-import com.rururi.easyprompt.utils.log
+
 
 @Composable
 fun PromptBottomBar(

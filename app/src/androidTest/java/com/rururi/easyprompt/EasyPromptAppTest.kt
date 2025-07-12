@@ -9,8 +9,6 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
-import com.rururi.easyprompt.ui.EasyPromptApp
-import com.rururi.easyprompt.ui.screen.prompt.PromptViewModel
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

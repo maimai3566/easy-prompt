@@ -12,9 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalClipboardManager
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.rururi.easyprompt.data.UserPreferencesRepository
@@ -23,7 +21,7 @@ import com.rururi.easyprompt.ui.navigation.Screen
 import com.rururi.easyprompt.ui.screen.prompt.PromptBottomBar
 import com.rururi.easyprompt.ui.screen.prompt.PromptTopBar
 import com.rururi.easyprompt.ui.screen.prompt.PromptViewModel
-import com.rururi.easyprompt.ui.theme.EasyPromptTheme
+
 import kotlinx.coroutines.delay
 
 @Composable
